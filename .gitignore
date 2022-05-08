@@ -1,7 +1,5 @@
 nbproject/private/private.properties
 nbproject/private/private.xml
-<<<<<<< HEAD
 /nbproject/private/
-=======
-build
->>>>>>> master
+/lib
+/nbproject
