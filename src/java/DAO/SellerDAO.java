@@ -37,6 +37,8 @@ public class SellerDAO extends DAO{
         String sql = "SELECT * FROM seller WHERE username = ? AND password = ?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, usrname);
+            ps.setString(2, passwrd);
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 Seller s = new Seller(

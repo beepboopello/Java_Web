@@ -2,9 +2,13 @@ package model;
 public class Product {
     private int productID;
     private String name,category,brand,color,size,description,image;
-    private long price;
+    private float price;
 
-    public Product(int id, String name, String category, String brand, String color, String size, long price, String description, String image) {
+    public Product() {
+    }
+
+    
+    public Product(int id, String name, String category, String brand, String color, String size, float price, String description, String image) {
         this.productID = id;
         this.name = name;
         this.category = category;
@@ -48,7 +52,7 @@ public class Product {
         return image;
     }
 
-    public long getPrice() {
+    public float getPrice() {
         return price;
     }
 
@@ -84,7 +88,7 @@ public class Product {
         this.image = image;
     }
 
-    public void setPrice(long price) {
+    public void setPrice(float price) {
         this.price = price;
     }
     
