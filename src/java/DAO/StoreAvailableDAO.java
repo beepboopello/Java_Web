@@ -47,7 +47,22 @@ public class StoreAvailableDAO extends DAO {
         } catch (SQLException e) {
         }
     }
-
+    public int getQuantity(int pid, int sid){
+        int quantity = 0;
+        String sql = "SELECT st.quantity FROM store_available st WHERE store_id = ? AND product_id = ?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, sid);
+            ps.setInt(2, pid);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                quantity = rs.getInt(1);
+            }
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
+        return quantity;
+    }
     public List<StoreAvailable> getStoreAvailableList() {
         List<StoreAvailable> list = new ArrayList<>();
         String sql = "SELECT * FROM store_available";
