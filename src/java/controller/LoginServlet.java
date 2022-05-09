@@ -51,9 +51,7 @@ public class LoginServlet extends HttpServlet {
                 request.getRequestDispatcher("home").forward(request, response);
         }
         else{
-            request.setAttribute("storeid",b.getStoreid() );
             request.getRequestDispatcher("admin").forward(request, response);
-            
         }
  
     }

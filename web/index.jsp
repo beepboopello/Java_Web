@@ -344,7 +344,12 @@
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
                         <a href="detail?pid=${o.productID}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                        <iframe name="frame" style="display:none;"></iframe>
+                        <form action="cart" method="POST" target="frame">
+                            <i class="fas fa-shopping-cart text-primary mr-1"></i>
+                            <input type="hidden" name="pid" value=${o.productID}>
+                            <input class="btn btn-sm text-dark p-0" type ="submit" value="Add to cart">
+                        </form>
                     </div>
                 </div>
            </div>
@@ -400,7 +405,11 @@
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
                         <a href="detail?pid=${o.productID}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="cart.jsp" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                        <form action="cart" method="POST" target="frame">
+                            <i class="fas fa-shopping-cart text-primary mr-1"></i>
+                            <input type="hidden" name="pid" value=${o.productID}>
+                            <input class="btn btn-sm text-dark p-0" type ="submit" value="Add to cart">
+                        </form>
                     </div>
                 </div>
             </div>

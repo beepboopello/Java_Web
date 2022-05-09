@@ -2,19 +2,19 @@ package model;
 public class Seller {
     private int sellerID;
     private String firstName, lastName, address,email,phone,username,password;
-    private int storeid;
 
-    public Seller(int id, String firstName, String lastName, String address, String email, String phone, int storeid) {
+
+    public Seller(int id, String firstName, String lastName, String address, String email, String phone) {
         this.sellerID = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.email = email;
         this.phone = phone;
-        this.storeid = storeid;
+
     }
 
-    public Seller(int id, String firstName, String lastName, String address, String email, String phone, String username, String password, int storeid) {
+    public Seller(int id, String firstName, String lastName, String address, String email, String phone, String username, String password) {
         this.sellerID = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -23,7 +23,7 @@ public class Seller {
         this.phone = phone;
         this.username = username;
         this.password = password;
-        this.storeid = storeid;
+
     }
 
     public int getSellerID() {
@@ -58,9 +58,7 @@ public class Seller {
         return password;
     }
 
-    public int getStoreid() {
-        return storeid;
-    }
+
 
     public void setSellerID(int sellerID) {
         this.sellerID = sellerID;
@@ -94,9 +92,7 @@ public class Seller {
         this.password = password;
     }
 
-    public void setStoreid(int storeid) {
-        this.storeid = storeid;
-    }
+
     
     @Override
     public String toString(){
@@ -105,7 +101,6 @@ public class Seller {
                 +getLastName() + " "
                 +getAddress() + " "
                 +getEmail() + " "
-                +getPhone() + " "
-                +getStoreid();
+                +getPhone() + " ";
     }
 }

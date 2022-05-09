@@ -24,7 +24,7 @@ public class OrderItemDAO extends DAO{
             ps.setInt(2, item.getOrderID());
             ps.setInt(3, item.getProductID());
             ps.setLong(4, item.getQuantity());
-            ps.setLong(5, item.getDiscount());
+            ps.setString(5, item.getDiscount());
             ps.executeUpdate();
         } catch (SQLException e) {
         }
@@ -36,8 +36,8 @@ public class OrderItemDAO extends DAO{
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, item.getProductID());
             ps.setInt(2, item.getQuantity());
-            ps.setLong(3, item.getDiscount());
-            ps.setLong(4, item.getPrice());
+            ps.setString(3, item.getDiscount());
+            ps.setFloat(4, item.getPrice());
             ps.setInt(5, item.getItemID());
             ps.setInt(6, item.getOrderID());
             ps.executeUpdate();
@@ -65,8 +65,8 @@ public class OrderItemDAO extends DAO{
                         rs.getInt("order_id"),
                         rs.getInt("product_id"),
                         rs.getInt("quantity"),
-                        rs.getLong("discount"),
-                        rs.getLong("price")
+                        rs.getString("discount"),
+                        rs.getFloat("price")
                 );
                 list.add(i);
             }
