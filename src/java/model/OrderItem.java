@@ -2,15 +2,18 @@ package model;
 
 public class OrderItem {
     private int itemID,orderID,productID,quantity;
-    private long discount,price;
+    private String discount;
+    private float price;
 
-    public OrderItem(int itemID, int orderID, int productID, int quantity, long discount, long price) {
+    public OrderItem(int itemID, int orderID, int productID, int quantity, String discount, float price) {
         this.itemID = itemID;
         this.orderID = orderID;
         this.productID = productID;
         this.quantity = quantity;
         this.discount = discount;
         this.price = price;
+    }
+    public OrderItem(){
     }
 
     public int getItemID() {
@@ -29,11 +32,11 @@ public class OrderItem {
         return quantity;
     }
 
-    public long getDiscount() {
+    public String getDiscount() {
         return discount;
     }
 
-    public long getPrice() {
+    public float getPrice() {
         return price;
     }
 
@@ -53,12 +56,16 @@ public class OrderItem {
         this.quantity = quantity;
     }
 
-    public void setDiscount(long discount) {
+    public void setDiscount(String discount) {
         this.discount = discount;
     }
 
-    public void setPrice(long price) {
+    public void setPrice(float price) {
         this.price = price;
+    }
+    @Override   
+    public String toString(){
+        return Integer.toString(itemID) + " " + Integer.toString(orderID) + " " + Integer.toString(productID) + " " + Integer.toString(quantity) + " " + discount + " " + Float.parseFloat(discount);
     }
     
     

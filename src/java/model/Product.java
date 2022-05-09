@@ -1,14 +1,14 @@
 package model;
 public class Product {
     private int productID;
-    private String name,category,brand,color,size,description,image;
+    private String name,category,brand,color,size,description,image,discount;
     private float price;
 
     public Product() {
     }
 
     
-    public Product(int id, String name, String category, String brand, String color, String size, float price, String description, String image) {
+    public Product(int id, String name, String category, String brand, String color, String size, float price, String description, String image, String discount) {
         this.productID = id;
         this.name = name;
         this.category = category;
@@ -17,7 +17,8 @@ public class Product {
         this.size = size;
         this.price = price;
         this.description = description;
-        this.image = image;        
+        this.image = image;  
+        this.discount = discount;      
     }
 
     public int getProductID() {
@@ -50,6 +51,9 @@ public class Product {
 
     public String getImage() {
         return image;
+    }
+    public String getDiscount() {
+        return discount;
     }
 
     public float getPrice() {
@@ -90,6 +94,9 @@ public class Product {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+    public void setDiscount(String discount){
+        this.discount=discount;
     }
     
     @Override

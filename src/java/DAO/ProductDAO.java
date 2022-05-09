@@ -94,6 +94,7 @@ public class ProductDAO extends DAO{
                 float  pprice = rs.getFloat("price");
                 String pdescription = rs.getString("product_description");
                 String pimage = rs.getString("product_image");
+                String pdiscount = rs.getString("discount");
                 Product p = new Product(
                         pid,
                         pname,
@@ -103,7 +104,8 @@ public class ProductDAO extends DAO{
                         psize,
                         pprice,
                         pdescription,
-                        pimage
+                        pimage,
+                        pdiscount
                 );
                 list.add(p);
             }
@@ -127,6 +129,7 @@ public class ProductDAO extends DAO{
                 float  pprice = rs.getFloat("price");
                 String pdescription = rs.getString("product_description");
                 String pimage = rs.getString("product_image");
+                String pdiscount = rs.getString("discount");
                 Product p = new Product(
                         pid,
                         pname,
@@ -136,7 +139,8 @@ public class ProductDAO extends DAO{
                         psize,
                         pprice,
                         pdescription,
-                        pimage
+                        pimage,
+                        pdiscount
                 );
                 list.add(p);
             }
@@ -163,6 +167,7 @@ public class ProductDAO extends DAO{
                 float  pprice = rs.getFloat("price");
                 String pdescription = rs.getString("product_description");
                 String pimage = rs.getString("product_image");
+                String pdiscount = rs.getString("discount");
                 Product p = new Product(
                         pid,
                         pname,
@@ -172,7 +177,8 @@ public class ProductDAO extends DAO{
                         psize,
                         pprice,
                         pdescription,
-                        pimage
+                        pimage,
+                        pdiscount
                 );
                 list.add(p);
             }
@@ -200,7 +206,8 @@ public class ProductDAO extends DAO{
                 float  pprice = rs.getFloat("price");
                 String pdescription = rs.getString("product_description");
                 String pimage = rs.getString("product_image");
-                p=new Product(pid, pname, pcategory, pbrand, pcolor, psize, pprice, pdescription, pimage);
+                String pdiscount = rs.getString("discount");
+                p=new Product(pid, pname, pcategory, pbrand, pcolor, psize, pprice, pdescription, pimage,pdiscount);
                
             }
         } catch (SQLException e) {
@@ -224,6 +231,7 @@ public class ProductDAO extends DAO{
                 float  pprice = rs.getFloat("price");
                 String pdescription = rs.getString("product_description");
                 String pimage = rs.getString("product_image");
+                String pdiscount = rs.getString("discount");
                 Product p = new Product(
                         pid,
                         pname,
@@ -233,7 +241,8 @@ public class ProductDAO extends DAO{
                         psize,
                         pprice,
                         pdescription,
-                        pimage
+                        pimage,
+                        pdiscount
                 );
                 list.add(p);
             }

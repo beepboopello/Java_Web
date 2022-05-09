@@ -125,7 +125,7 @@ public class CustomerDAO extends DAO{
         return c;
     }
     public static void main(String[] args) {
-        //CustomerDAO cDAO = new CustomerDAO();
+        CustomerDAO cDAO = new CustomerDAO();
             //cDAO.addCustomer(new Customer(2,"Le","Am","10, Mo Lao, Ha Dong, Ha Noi","amle10@gmul.com","0123456987","amimim","bsds"));
             System.out.println(cDAO.checkCustomer("hue","hue"));
             //cDAO.removeCustomer(1);
