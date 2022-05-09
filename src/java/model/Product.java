@@ -6,6 +6,17 @@ public class Product {
 
     public Product() {
     }
+    public Product(int id, String name, String category, String brand, String color, String size, float price, String description, String image) {
+        this.productID = id;
+        this.name = name;
+        this.category = category;
+        this.brand = brand;
+        this.color = color;
+        this.size = size;
+        this.price = price;
+        this.description = description;
+        this.image = image;     
+    }
 
     
     public Product(int id, String name, String category, String brand, String color, String size, float price, String description, String image, String discount) {

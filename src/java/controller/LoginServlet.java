@@ -51,16 +51,14 @@ public class LoginServlet extends HttpServlet {
                 request.getRequestDispatcher("home").forward(request, response);
         }
         else{
-<<<<<<< Updated upstream
-            request.setAttribute("storeid",b.getStoreid() );
+
+
             request.getRequestDispatcher("admin").forward(request, response);
-=======
-//            request.setAttribute("storeid",b.getStoreid() );
 //                    request.getAttribute("listp");
             System.out.println(b);
             request.getRequestDispatcher("admin").forward(request, response);
 //            cai nay chuyen sang servlet đau co /
->>>>>>> Stashed changes
+
             
         }
  
