@@ -410,6 +410,17 @@ $(document).ready(function(){
                                 <label>quantity</label>
                                 <input type="text" name="aq" class="form-control" required>
                         </div>
+                        <div class="form-group">
+                                <label>availability</label>
+                                <select name="avail" id="avail">
+                                    <option value="0">Available</option>
+                                    <option value="1">Not available</option>
+                                </select>
+                        </div>
+                        <div class="form-group">
+                                <label>discount</label>
+                                <input type="text" name="pdis" class="form-control" required>
+                        </div>
                         				
                 </div>
                 <div class="modal-footer">

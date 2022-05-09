@@ -20,6 +20,9 @@ public class ProductDAO extends DAO{
 "           ,[price]" +
 "           ,[product_description]" +
 "           ,[product_image])" +
+"           ,[product_quantity]" +
+"           ,[product_availability]" +
+"           ,[product_discount]" +
 "     VALUES(?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -32,6 +35,9 @@ public class ProductDAO extends DAO{
             ps.setFloat(7, p.getPrice());
             ps.setString(8, p.getDescription());
             ps.setString(9, p.getImage());
+            ps.setInt(10, p.getQuantity());
+            ps.setInt(11, p.getAvailability());
+            ps.setString(12, p.getDiscount());
             ps.executeUpdate();
         } catch (SQLException e) {
             
@@ -48,19 +54,24 @@ public class ProductDAO extends DAO{
 "      ,[price] = ?" +
 "      ,[product_description] = ?" +
 "      ,[product_image] = ?" +
+"      ,[product_quantity] = ?" +
+"      ,[product_availability] = ?" +
+"      ,[product_discount] = ?" +
 " WHERE [product_id] = ?";
          try {
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, p.getName());
-            ps.setString(2, p.getCategory());
-            ps.setString(3, p.getBrand());
-            ps.setString(4, p.getColor());
-            ps.setString(5, p.getSize());
-            ps.setFloat(6, p.getPrice());
-            ps.setString(7, p.getDescription());
-            ps.setString(8, p.getImage());
-            ps.setInt(9, p.getProductID());
-
+            ps.setInt(1, p.getProductID());
+            ps.setString(2, p.getName());
+            ps.setString(3, p.getCategory());
+            ps.setString(4, p.getBrand());
+            ps.setString(5, p.getColor());
+            ps.setString(6, p.getSize());
+            ps.setFloat(7, p.getPrice());
+            ps.setString(8, p.getDescription());
+            ps.setString(9, p.getImage());
+            ps.setInt(10, p.getQuantity());
+            ps.setInt(11, p.getAvailability());
+            ps.setString(12, p.getDiscount());
             ps.executeUpdate();
         } catch (SQLException e) {
             
@@ -95,17 +106,21 @@ public class ProductDAO extends DAO{
                 String pdescription = rs.getString("product_description");
                 String pimage = rs.getString("product_image");
                 String pdiscount = rs.getString("discount");
+                int pquantity = rs.getInt("quantity");
+                int pavailability = rs.getInt("availability");
                 Product p = new Product(
                         pid,
+                        pquantity,
+                        pavailability,
                         pname,
                         pcategory,
                         pbrand,
                         pcolor,
-                        psize,
-                        pprice,
+                        psize, 
                         pdescription,
                         pimage,
-                        pdiscount
+                        pdiscount,
+                        pprice
                 );
                 list.add(p);
             }
@@ -130,17 +145,21 @@ public class ProductDAO extends DAO{
                 String pdescription = rs.getString("product_description");
                 String pimage = rs.getString("product_image");
                 String pdiscount = rs.getString("discount");
+                int pquantity = rs.getInt("quantity");
+                int pavailability = rs.getInt("availability");
                 Product p = new Product(
                         pid,
+                        pquantity,
+                        pavailability,
                         pname,
                         pcategory,
                         pbrand,
                         pcolor,
-                        psize,
-                        pprice,
+                        psize, 
                         pdescription,
                         pimage,
-                        pdiscount
+                        pdiscount,
+                        pprice
                 );
                 list.add(p);
             }
@@ -168,17 +187,21 @@ public class ProductDAO extends DAO{
                 String pdescription = rs.getString("product_description");
                 String pimage = rs.getString("product_image");
                 String pdiscount = rs.getString("discount");
+                int pquantity = rs.getInt("quantity");
+                int pavailability = rs.getInt("availability");
                 Product p = new Product(
                         pid,
+                        pquantity,
+                        pavailability,
                         pname,
-                        pcategory,  
+                        pcategory,
                         pbrand,
                         pcolor,
-                        psize,
-                        pprice,
+                        psize, 
                         pdescription,
                         pimage,
-                        pdiscount
+                        pdiscount,
+                        pprice
                 );
                 list.add(p);
             }
@@ -207,7 +230,22 @@ public class ProductDAO extends DAO{
                 String pdescription = rs.getString("product_description");
                 String pimage = rs.getString("product_image");
                 String pdiscount = rs.getString("discount");
-                p=new Product(pid, pname, pcategory, pbrand, pcolor, psize, pprice, pdescription, pimage,pdiscount);
+                int pquantity = rs.getInt("quantity");
+                int pavailability = rs.getInt("availability");
+                p = new Product(
+                        pid,
+                        pquantity,
+                        pavailability,
+                        pname,
+                        pcategory,
+                        pbrand,
+                        pcolor,
+                        psize, 
+                        pdescription,
+                        pimage,
+                        pdiscount,
+                        pprice
+                );
                
             }
         } catch (SQLException e) {
@@ -221,7 +259,7 @@ public class ProductDAO extends DAO{
         try {
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {                
+            while (rs.next()) {
                 int pid = rs.getInt("product_id");
                 String pname = rs.getString("product_name");
                 String pcategory = rs.getString("category");
@@ -232,17 +270,21 @@ public class ProductDAO extends DAO{
                 String pdescription = rs.getString("product_description");
                 String pimage = rs.getString("product_image");
                 String pdiscount = rs.getString("discount");
+                int pquantity = rs.getInt("quantity");
+                int pavailability = rs.getInt("availability");
                 Product p = new Product(
                         pid,
+                        pquantity,
+                        pavailability,
                         pname,
                         pcategory,
                         pbrand,
                         pcolor,
-                        psize,
-                        pprice,
+                        psize, 
                         pdescription,
                         pimage,
-                        pdiscount
+                        pdiscount,
+                        pprice
                 );
                 list.add(p);
             }

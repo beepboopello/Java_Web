@@ -53,15 +53,15 @@ public class AddServlet extends HttpServlet {
         String pd = request.getParameter("ades");
         String pi = request.getParameter("ai");
         String pq = request.getParameter("aq");
-        
-        
-        Product p = new Product(pid, pn, pca, pb, pco, ps, pp, pd, pi);
+        String pavail = request.getParameter("avail");
+        String pdiscount = request.getParameter("pdis"); 
+        Product p = new Product(pid, Integer.parseInt(pq), Integer.parseInt(pavail), pn, pca, pb, pco, ps, pd, pi, pdiscount, pp);
         ProductDAO dao = new ProductDAO();
         dao.addProduct(p);
         
-        StoreAvailable sa = new StoreAvailable(1, pid, Integer.parseInt(pq));
-        StoreAvailableDAO sdao = new StoreAvailableDAO();
-        sdao.addStoreAvailable(sa);
+//        StoreAvailable sa = new StoreAvailable(1, pid, Integer.parseInt(pq));
+//        StoreAvailableDAO sdao = new StoreAvailableDAO();
+//        sdao.addStoreAvailable(sa);
         
         
         response.sendRedirect("admin");
