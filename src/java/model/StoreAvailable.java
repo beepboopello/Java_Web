@@ -9,6 +9,9 @@ public class StoreAvailable {
         this.quantity = quantity;
     }
 
+    public StoreAvailable() {
+    }
+    
     public int getStoreID() {
         return storeID;
     }

@@ -6,23 +6,24 @@
 package controller;
 
 import DAO.ProductDAO;
+import DAO.StoreAvailableDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Product;
+import model.Seller;
+import model.StoreAvailable;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "AdminServlet", urlPatterns = {"/admin"})
-public class AdminServlet extends HttpServlet {
+@WebServlet(name = "AddServlet", urlPatterns = {"/add"})
+public class AddServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,12 +37,35 @@ public class AdminServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        ProductDAO dao=new ProductDAO();
-        List<Product> list1 = new ArrayList<>();
-        list1= dao.getPlist();
+//        String pid =request.getParameter("aid");
+//        int id;
+//        id=Integer.parseInt(pid);
+        int pid = Integer.parseInt(request.getParameter("aid"));
+        String pn = request.getParameter("an");
+        String pca = request.getParameter("acate");
+        String pb = request.getParameter("ab");
+        String pco = request.getParameter("acolor");
+        String ps = request.getParameter("as");
+//        String x = request.getParameter("ap");
+//        float pp;
+//        pp=Float.parseFloat(x);
+        float pp = Float.parseFloat(request.getParameter("ap"));
+        String pd = request.getParameter("ades");
+        String pi = request.getParameter("ai");
+        String pq = request.getParameter("aq");
         
-        request.setAttribute("listp", list1);
-        request.getRequestDispatcher("admin.jsp").forward(request, response);
+        
+        Product p = new Product(pid, pn, pca, pb, pco, ps, pp, pd, pi);
+        ProductDAO dao = new ProductDAO();
+        dao.addProduct(p);
+        
+        StoreAvailable sa = new StoreAvailable(1, pid, Integer.parseInt(pq));
+        StoreAvailableDAO sdao = new StoreAvailableDAO();
+        sdao.addStoreAvailable(sa);
+        
+        
+        response.sendRedirect("admin");
+//        request.getRequestDispatcher("admin").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -74,6 +74,7 @@ public class ProductDAO extends DAO{
             ps.setInt(1, id);
             ps.executeUpdate();
         } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
     
@@ -243,8 +244,10 @@ public class ProductDAO extends DAO{
     public static void main(String[] args) {
         List<Product> list = new ArrayList<>();
         ProductDAO p =new ProductDAO();
-        list =p.getNewlist();
-        
-        System.out.println(list);
+        p.deleteProduct(11);
+//        list =p.getNewlist();
+//        Product x=new Product(8, "quan", "1", "dd", "red", "M", 20399, "quan", "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcf.shopee.vn%2Ffile%2F6b15d30647cafb56479616647af1dfa5&imgrefurl=http%3A%2F%2Fchonbachhoa.info%2Fao-baby-doll-ao-nu-dep-kieu-dang-nang-dong-tre-trung-11472.html&tbnid=ewJEcWWSbR42_M&vet=12ahUKEwjijtXgm9D3AhWfjtgFHZZwDs0QMygDegUIARC6AQ..i&docid=8T94ljs2rhEdjM&w=1024&h=1024&q=ao%20nu&ved=2ahUKEwjijtXgm9D3AhWfjtgFHZZwDs0QMygDegUIARC6AQ");
+//        p.addProduct(x);
+//        System.out.println(list);
     }
 }

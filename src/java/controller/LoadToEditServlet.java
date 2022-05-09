@@ -6,23 +6,23 @@
 package controller;
 
 import DAO.ProductDAO;
+import DAO.StoreAvailableDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Product;
+import model.StoreAvailable;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "AdminServlet", urlPatterns = {"/admin"})
-public class AdminServlet extends HttpServlet {
+@WebServlet(name = "LoadToEditServlet", urlPatterns = {"/load"})
+public class LoadToEditServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,12 +36,17 @@ public class AdminServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String pId=request.getParameter("pid");
         ProductDAO dao=new ProductDAO();
-        List<Product> list1 = new ArrayList<>();
-        list1= dao.getPlist();
+        Product p =dao.getP(pId);
         
-        request.setAttribute("listp", list1);
-        request.getRequestDispatcher("admin.jsp").forward(request, response);
+        StoreAvailable sa = new StoreAvailable();
+        StoreAvailableDAO sdao = new StoreAvailableDAO();
+        sa=sdao.getSaByid(Integer.parseInt(pId));
+        
+        request.setAttribute("pro", p);
+        request.setAttribute("sa", sa);
+        request.getRequestDispatcher("new.html").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
