@@ -2,7 +2,7 @@ package model;
 
 public class OrderItem {
     private int itemID,orderID,productID,quantity;
-    private String discount;
+    private String discount,name,img;
     private float price;
 
     public OrderItem(int itemID, int orderID, int productID, int quantity, String discount, float price) {
@@ -14,6 +14,24 @@ public class OrderItem {
         this.price = price;
     }
     public OrderItem(){
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public int getItemID() {

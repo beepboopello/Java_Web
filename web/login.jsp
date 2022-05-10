@@ -46,7 +46,7 @@
                         <form action="login" class="signin-form">
                             <div class="form-group mt-3">
                                     <input type="text" class="form-control" name="user" required>
-                                    <label class="form-control-placeholder" for="username" >Username</label>
+                                    <label class="form-control-placeholder" for="username" autofocus >Username</label>
                             </div>
 		            <div class="form-group">
 		              <input id="password-field" type="password" name ="pass" class="form-control" required>

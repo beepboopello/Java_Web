@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Customer;
 import model.Seller;
 
@@ -46,9 +47,14 @@ public class LoginServlet extends HttpServlet {
         if(b==null){
             if (a==null){
                 request.getRequestDispatcher("login.jsp").forward(request, response);
+           
             }
-            else
+            else{
                 request.getRequestDispatcher("home").forward(request, response);
+                HttpSession session = request.getSession();
+                session.setAttribute("user", a);
+            }
+            
         }
         else{
             request.getRequestDispatcher("admin").forward(request, response);

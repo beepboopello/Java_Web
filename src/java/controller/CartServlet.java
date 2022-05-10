@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,6 +24,7 @@ import model.Product;
  *
  * @author Acer
  */
+@WebServlet(name = "CartServlet", urlPatterns = {"/cart"})
 public class CartServlet extends HttpServlet {
 
     /**
@@ -50,7 +52,6 @@ public class CartServlet extends HttpServlet {
         return;}
         OrderItem items = new OrderItem();
         Product p = dao.getP(pid);
-
         items.setItemID(p.getProductID());
         items.setPrice(p.getPrice());
         items.setDiscount(p.getDiscount());
