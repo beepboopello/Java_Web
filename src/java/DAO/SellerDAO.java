@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Seller;
 
 
@@ -15,7 +17,7 @@ public class SellerDAO extends DAO{
                 + "seller_id,"
                 + "first_name,last_name,address,"
                 + "email,phone,username,password,store_id)"
-                + " VALUES(?,?,?,?,?,?,?,?,?)";
+                + " VALUES(?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, s.getSellerID());
@@ -26,7 +28,6 @@ public class SellerDAO extends DAO{
             ps.setString(6, s.getPhone());
             ps.setString(7, s.getUsername());
             ps.setString(8, s.getPassword());
-            ps.setInt(9, s.getStoreid());
             ps.executeUpdate();
         } catch (SQLException e) {
         }
@@ -47,8 +48,7 @@ public class SellerDAO extends DAO{
                         rs.getString("email"),
                         rs.getString("phone"),
                         usrname,
-                        passwrd,   
-                        rs.getInt("store_id")
+                        passwrd
                 );
                 return s;
             }
@@ -59,7 +59,7 @@ public class SellerDAO extends DAO{
     public void updateSeller (Seller s){
         String sql = "UPDATE seller SET "
                 + "first_name = ?,last_name = ?,address = ?,"
-                + "email = ?,phone = ?,store_id = ? WHERE customer_id = ?";
+                + "email = ?,phone = ? WHERE customer_id = ?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, s.getFirstName());
@@ -67,8 +67,7 @@ public class SellerDAO extends DAO{
             ps.setString(3, s.getAddress());
             ps.setString(4, s.getEmail());
             ps.setString(5, s.getPhone());
-            ps.setInt(6, s.getStoreid());
-            ps.setInt(7, s.getSellerID());
+            ps.setInt(6, s.getSellerID());
             ps.executeUpdate();
         } catch (SQLException e) {
             
@@ -98,8 +97,7 @@ public class SellerDAO extends DAO{
                 String saddress = rs.getString("address");
                 String semail = rs.getString("email");
                 String sphone = rs.getString("phone");
-                int storeid = rs.getInt("store_id");
-                Seller s = new Seller(sid,sfirstName,slastName,saddress,semail,sphone,storeid);
+                Seller s = new Seller(sid,sfirstName,slastName,saddress,semail,sphone);
                 list.add(s);
             }
         } catch (Exception e) {
@@ -108,7 +106,7 @@ public class SellerDAO extends DAO{
     }
     public static void main(String[] args) {
         SellerDAO sldao = new SellerDAO();
-        sldao.addSeller(new Seller(1,"AUwie","ISdwqe","cu wae 32 1eiurhw","awe@iewr.ewa","9343284234","aaa","ccc",4));
+        sldao.addSeller(new Seller(1,"AUwie","ISdwqe","cu wae 32 1eiurhw","awe@iewr.ewa","9343284234","aaa","ccc"));
         
     }
 }

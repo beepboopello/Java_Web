@@ -78,4 +78,28 @@ public class StoreAvailableDAO extends DAO {
         }
         return list;
     }
+    public StoreAvailable getSaByid(int id){
+        StoreAvailable sa = new StoreAvailable();
+        String sql = "SELECT * FROM store_available where product_id = ?";
+        try { 
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int said = rs.getInt("store_id");
+                int sapid = rs.getInt("product_id");
+                int quantity = rs.getInt("quantity");
+                sa= new StoreAvailable(sapid, sapid, quantity);
+            }
+        
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return sa;
+    }
+    public static void main(String[] args) {
+        StoreAvailableDAO x = new StoreAvailableDAO();
+        StoreAvailable k=x.getSaByid(1);
+        System.out.println(k);
+    }
 }

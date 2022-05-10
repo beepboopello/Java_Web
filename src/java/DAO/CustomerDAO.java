@@ -11,20 +11,20 @@ public class CustomerDAO extends DAO{
     
     public void addCustomer (Customer c){
         String sql = "INSERT INTO customer("
-                + "customer_id,"
+               
                 + "first_name,last_name,address,"
                 + "email,phone,username,password)"
-                + " VALUES(?,?,?,?,?,?,?,?)";
+                + " VALUES(?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, c.getCustomerID());
-            ps.setString(2, c.getFirstName());
-            ps.setString(3, c.getLastName());
-            ps.setString(4, c.getAddress());
-            ps.setString(5, c.getEmail());
-            ps.setString(6, c.getPhone());
-            ps.setString(7, c.getUsername());
-            ps.setString(8, c.getPassword());
+          
+            ps.setString(1, c.getFirstName());
+            ps.setString(2, c.getLastName());
+            ps.setString(3, c.getAddress());
+            ps.setString(4, c.getEmail());
+            ps.setString(5, c.getPhone());
+            ps.setString(6, c.getUsername());
+            ps.setString(7, c.getPassword());
             ps.executeUpdate();
         } catch (SQLException e) {
         }
@@ -95,7 +95,9 @@ public class CustomerDAO extends DAO{
                 String caddress = rs.getString("address");
                 String cemail = rs.getString("email");
                 String cphone = rs.getString("phone");
-                Customer c = new Customer(cid,cfirstName,clastName,caddress,cemail,cphone);
+                String user = rs.getString("username");
+                String pass = rs.getString("password");
+                Customer c = new Customer(cid,cfirstName,clastName,caddress,cemail,cphone,user, pass);
                 list.add(c);
             }          
         } catch (SQLException e) {
@@ -117,7 +119,9 @@ public class CustomerDAO extends DAO{
                 String caddress = rs.getString("address");
                 String cemail = rs.getString("email");
                 String cphone = rs.getString("phone");
-                c = new Customer(cid,cfirstName,clastName,caddress,cemail,cphone);                
+                 String user = rs.getString("username");
+                String pass = rs.getString("password");
+                c = new Customer(cid,cfirstName,clastName,caddress,cemail,cphone,user, pass);                
             }
         }catch(SQLException e){
             
@@ -125,9 +129,14 @@ public class CustomerDAO extends DAO{
         return c;
     }
     public static void main(String[] args) {
+        CustomerDAO cDAO = new CustomerDAO();
+            cDAO.addCustomer(new Customer("Le","Am","10, Mo Lao, Ha Dong, Ha Noi","amle10@gmul.com","0123456987","an","an"));
+//            System.out.println(cDAO.checkCustomer("hue","hue"));
+
         //CustomerDAO cDAO = new CustomerDAO();
             //cDAO.addCustomer(new Customer(2,"Le","Am","10, Mo Lao, Ha Dong, Ha Noi","amle10@gmul.com","0123456987","amimim","bsds"));
             //System.out.println(cDAO.checkCustomer("hue","hue"));
+
             //cDAO.removeCustomer(1);
             //cDAO.updateCustomer(new Customer(2,"Le","Am","10, Mo Lao, Ha Dong, Ha Noi","amle10@gmul.com","0123456987"));
             //System.out.println(cDAO.checkCustomer("amimim","bsds"));

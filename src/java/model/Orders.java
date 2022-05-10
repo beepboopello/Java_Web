@@ -11,6 +11,8 @@ public class Orders {
         this.status = status;
         this.order_date = order_date;
     }
+    public Orders(){
+    }
 
     public int getOrderID() {
         return orderID;

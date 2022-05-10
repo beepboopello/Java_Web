@@ -5,13 +5,17 @@
  */
 package controller;
 
+import DAO.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Product;
 
 /**
  *
@@ -32,7 +36,11 @@ public class AdminServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        ProductDAO dao=new ProductDAO();
+        List<Product> list1 = new ArrayList<>();
+        list1= dao.getPlistAdmin();
         
+        request.setAttribute("listp", list1);
         request.getRequestDispatcher("admin.jsp").forward(request, response);
     }
 

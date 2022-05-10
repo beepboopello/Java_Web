@@ -39,9 +39,7 @@ public class ShopServlet extends HttpServlet {
        ProductDAO dao=new ProductDAO();
         List<Product> list = new ArrayList<>();
         list=dao.getClist(cateId);
-        
-        
-        
+ 
         request.setAttribute("listc", list);
         request.getRequestDispatcher("shop.jsp").forward(request, response);
     }
