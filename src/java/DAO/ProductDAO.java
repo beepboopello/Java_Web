@@ -292,6 +292,33 @@ public class ProductDAO extends DAO{
         }
         return p;
     }
+    public List<Product> getListProductfromStore(int id){
+        List<Product> list = new ArrayList<>();
+        String sql = "SELECT * FROM product p" +
+        "INNER JOIN store_available t " + 
+        "ON p.product_id = t.product_id WHERE t.store_id = ?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Product p = new Product(
+                    rs.getInt("product_id"),
+                    rs.getString("product_name"),
+                    rs.getString("category"),
+                    rs.getString("brand"),
+                    rs.getString("color"),
+                    rs.getString("size"),
+                    rs.getFloat("price"),
+                    rs.getString("product_description"),
+                    rs.getString("product_image")
+                );
+                list.add(p);
+            }
+        } catch (SQLException e) {
+        }
+        return list;
+    }
     public List<Product> searchProduct(String name){
         List<Product> list = new ArrayList<>();
         String sql = "SELECT * FROM product WHERE product_name LIKE '%" + name + "%'";

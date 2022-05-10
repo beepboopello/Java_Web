@@ -1,8 +1,7 @@
 nbproject/private/private.properties
 nbproject/private/private.xml
-src/java/DAO/DAO.java
-<<<<<<< HEAD
 /nbproject/private/
-=======
-build
->>>>>>> master
+/lib
+/nbproject
+/src/java/DAO/DAO.java
+/build

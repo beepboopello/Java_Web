@@ -132,6 +132,11 @@ public class CustomerDAO extends DAO{
         CustomerDAO cDAO = new CustomerDAO();
             cDAO.addCustomer(new Customer("Le","Am","10, Mo Lao, Ha Dong, Ha Noi","amle10@gmul.com","0123456987","an","an"));
 //            System.out.println(cDAO.checkCustomer("hue","hue"));
+
+        //CustomerDAO cDAO = new CustomerDAO();
+            //cDAO.addCustomer(new Customer(2,"Le","Am","10, Mo Lao, Ha Dong, Ha Noi","amle10@gmul.com","0123456987","amimim","bsds"));
+            //System.out.println(cDAO.checkCustomer("hue","hue"));
+
             //cDAO.removeCustomer(1);
             //cDAO.updateCustomer(new Customer(2,"Le","Am","10, Mo Lao, Ha Dong, Ha Noi","amle10@gmul.com","0123456987"));
             //System.out.println(cDAO.checkCustomer("amimim","bsds"));
