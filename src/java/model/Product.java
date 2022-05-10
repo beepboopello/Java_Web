@@ -127,6 +127,9 @@ public class Product {
                 + getPrice() + " "
                 + getDescription() + " "
                 + getImage() + " "
+                +Integer.toString(getQuantity()) + " "
+                +Integer.toString(getAvailability())
+                + getDiscount()
                 ;
     }
 }

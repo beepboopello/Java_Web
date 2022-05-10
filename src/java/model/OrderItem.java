@@ -2,7 +2,7 @@ package model;
 
 public class OrderItem {
     private int itemID,orderID,productID,quantity;
-    private String discount;
+    private String discount,name,img;
     private float price;
 
     public OrderItem(int itemID, int orderID, int productID, int quantity, String discount, float price) {
@@ -13,6 +13,15 @@ public class OrderItem {
         this.discount = discount;
         this.price = price;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public OrderItem(){
     }
 
@@ -63,9 +72,18 @@ public class OrderItem {
     public void setPrice(float price) {
         this.price = price;
     }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
     @Override   
     public String toString(){
-        return Integer.toString(itemID) + " " + Integer.toString(orderID) + " " + Integer.toString(productID) + " " + Integer.toString(quantity) + " " + discount + " " + Float.parseFloat(discount);
+        return "San pham : " + Integer.toString(itemID) + "\n" +"ID dat hang :"+ Integer.toString(orderID) + " ID san pham : " + Integer.toString(productID) + "\n So luong : " + Integer.toString(quantity) + " \n Giam gia :" + discount + " Gia :" + price;
     }
     
     

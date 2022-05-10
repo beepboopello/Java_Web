@@ -43,7 +43,7 @@
 									</p>
 								</div>
 			      	</div>
-                        <form action="login" class="signin-form">
+                        <form action="login" method="POST"class="signin-form">
                             <div class="form-group mt-3">
                                     <input type="text" class="form-control" name="user" required>
                                     <label class="form-control-placeholder" for="username" >Username</label>

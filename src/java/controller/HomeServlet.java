@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Product;
 
 /**
@@ -36,7 +37,8 @@ public class HomeServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-            
+        HttpSession session = request.getSession();
+        System.out.println(session.getAttribute("user"));
         ProductDAO dao=new ProductDAO();
         List<Product> list1 = new ArrayList<>();
         list1= dao.getPlist();

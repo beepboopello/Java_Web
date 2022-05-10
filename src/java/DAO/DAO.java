@@ -12,7 +12,7 @@ public class DAO {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             conn = DriverManager.getConnection(url, username, password);
-            System.out.println("Connected!");
+//            System.out.println("Connected!");
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error" + e);
     }

@@ -412,7 +412,7 @@ $(document).ready(function(){
                         </div>
                         <div class="form-group">
                                 <label>availability</label>
-                                <select name="avail" id="avail">
+                                <select name="avail" id="avail" style="">
                                     <option value="0">Available</option>
                                     <option value="1">Not available</option>
                                 </select>

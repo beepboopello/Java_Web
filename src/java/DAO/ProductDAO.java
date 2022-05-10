@@ -19,11 +19,11 @@ public class ProductDAO extends DAO{
 "           ,[size]" +
 "           ,[price]" +
 "           ,[product_description]" +
-"           ,[product_image])" +
-"           ,[product_quantity]" +
-"           ,[product_availability]" +
-"           ,[product_discount]" +
-"     VALUES(?,?,?,?,?,?,?,?,?)";
+"           ,[product_image]" +
+"           ,[quantity]" +
+"           ,[availability]" +
+"           ,[discount])" +
+"     VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, p.getProductID());
@@ -40,7 +40,7 @@ public class ProductDAO extends DAO{
             ps.setString(12, p.getDiscount());
             ps.executeUpdate();
         } catch (SQLException e) {
-            
+            e.printStackTrace();
         }
     }
     
@@ -54,9 +54,9 @@ public class ProductDAO extends DAO{
 "      ,[price] = ?" +
 "      ,[product_description] = ?" +
 "      ,[product_image] = ?" +
-"      ,[product_quantity] = ?" +
-"      ,[product_availability] = ?" +
-"      ,[product_discount] = ?" +
+"      ,[quantity] = ?" +
+"      ,[availability] = ?" +
+"      ,[discount] = ?" +
 " WHERE [product_id] = ?";
          try {
             PreparedStatement ps = conn.prepareStatement(sql);
