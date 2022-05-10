@@ -38,7 +38,7 @@ public class AdminServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         ProductDAO dao=new ProductDAO();
         List<Product> list1 = new ArrayList<>();
-        list1= dao.getPlist();
+        list1= dao.getPlistAdmin();
         
         request.setAttribute("listp", list1);
         request.getRequestDispatcher("admin.jsp").forward(request, response);

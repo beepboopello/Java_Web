@@ -37,18 +37,14 @@ public class AddServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-//        String pid =request.getParameter("aid");
-//        int id;
-//        id=Integer.parseInt(pid);
+
         int pid = Integer.parseInt(request.getParameter("aid"));
         String pn = request.getParameter("an");
         String pca = request.getParameter("acate");
         String pb = request.getParameter("ab");
         String pco = request.getParameter("acolor");
         String ps = request.getParameter("as");
-//        String x = request.getParameter("ap");
-//        float pp;
-//        pp=Float.parseFloat(x);
+
         float pp = Float.parseFloat(request.getParameter("ap"));
         String pd = request.getParameter("ades");
         String pi = request.getParameter("ai");
@@ -56,6 +52,7 @@ public class AddServlet extends HttpServlet {
         String pavail = request.getParameter("avail");
         String pdiscount = request.getParameter("pdis"); 
         Product p = new Product(pid, Integer.parseInt(pq), Integer.parseInt(pavail), pn, pca, pb, pco, ps, pd, pi, pdiscount, pp);
+        
         ProductDAO dao = new ProductDAO();
         dao.addProduct(p);
         

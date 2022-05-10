@@ -3,7 +3,7 @@
     Created on : May 6, 2022, 11:45:01 AM
     Author     : Admin
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -190,41 +190,7 @@
                             <th>Remove</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <c:forEach items = "${cart}" var = "o">
-                        <tr>
-                            <td class="align-middle"><img src="${o.img}" alt="" style="width: 50px;"> ${o.name}</td>
-                            <td class="align-middle">${o.price}</td>
-                            <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-<!--                                        <button class="btn btn-sm btn-primary btn-minus" >
-                                        <i class="fa fa-minus"></i>
-                                        </button>-->
-                                    </div>
-                                    <label class="form-control form-control-sm text-center">${o.quantity}</label>
-                                    <div class="input-group-btn">
-<!--                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>-->
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <c:set var="total" value="${o.price*o.quantity}"/>
-                            <c:set var="pay" value="${pay+total}"/>
-                            <td class="align-middle"><c:out value="${total}"/></td>
-                            <td class="align-middle">
-                                <form action="cart" method="POST">
-                                    <button type="submit" class="btn btn-sm btn-primary">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                    <input type="hidden" name="itemid" value="${o.itemid}">
-                                </form>
-                            </td>
-                        </tr>
-                        </c:forEach>
-
-                    <!--
+                    <tbody class="align-middle">
                         <tr>
                             <td class="align-middle"><img src="img/product-1.jpg" alt="" style="width: 50px;"> Colorful Stylish Shirt</td>
                             <td class="align-middle">$150</td>
@@ -329,19 +295,19 @@
                             </td>
                             <td class="align-middle">$150</td>
                             <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
-                        </tr>-->
+                        </tr>
                     </tbody>
                 </table>
             </div>
             <div class="col-lg-4">
-<!--                <form class="mb-5" action="">
+                <form class="mb-5" action="">
                     <div class="input-group">
                         <input type="text" class="form-control p-4" placeholder="Coupon Code">
                         <div class="input-group-append">
                             <button class="btn btn-primary">Apply Coupon</button>
                         </div>
                     </div>
-                </form>-->
+                </form>
                 <div class="card border-secondary mb-5">
                     <div class="card-header bg-secondary border-0">
                         <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
@@ -349,18 +315,17 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-3 pt-1">
                             <h6 class="font-weight-medium">Subtotal</h6>
-                            <h6 class="font-weight-medium">${pay}</h6>
+                            <h6 class="font-weight-medium">$150</h6>
                         </div>
                         <div class="d-flex justify-content-between">
                             <h6 class="font-weight-medium">Shipping</h6>
-                            <c:set var="ship" value="10000"/>
-                            <h6 class="font-weight-medium">${ship}</h6>
+                            <h6 class="font-weight-medium">$10</h6>
                         </div>
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
                         <div class="d-flex justify-content-between mt-2">
                             <h5 class="font-weight-bold">Total</h5>
-                            <h5 class="font-weight-bold">${pay+ship}</h5>
+                            <h5 class="font-weight-bold">$160</h5>
                         </div>
                         <button class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button>
                     </div>

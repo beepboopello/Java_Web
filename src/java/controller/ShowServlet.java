@@ -5,22 +5,21 @@
  */
 package controller;
 
-import DAO.CustomerDAO;
-import DAO.SellerDAO;
+import DAO.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Customer;
-import model.Seller;
 
 /**
  *
  * @author Admin
  */
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "ShowServlet", urlPatterns = {"/show"})
+public class ShowServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,27 +33,11 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String username=request.getParameter("user");
-        String password=request.getParameter("pass");
-        CustomerDAO dao=new CustomerDAO();
-        Customer a = dao.checkCustomer(username, password);
+        int id= Integer.parseInt(request.getParameter("oid"));
+        ProductDAO dao = new ProductDAO();
+        dao.updateAvail(id);
         
-        SellerDAO dao2=new SellerDAO();
-        Seller b =dao2.checkSeller(username, password);
-//        System.out.println(a+ " " +b);
-        
-        if(b==null){
-            if (a==null){
-                request.getRequestDispatcher("login.jsp").forward(request, response);
-            }
-            else
-                request.getRequestDispatcher("home").forward(request, response);
-        }
-        else{
-            request.getRequestDispatcher("admin").forward(request, response);
-            
-        }
- 
+        request.getRequestDispatcher("admin").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

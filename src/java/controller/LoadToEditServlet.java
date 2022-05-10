@@ -36,17 +36,14 @@ public class LoadToEditServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String pId=request.getParameter("pid");
+        String pId=request.getParameter("lid");
         ProductDAO dao=new ProductDAO();
         Product p =dao.getP(pId);
         
-        StoreAvailable sa = new StoreAvailable();
-        StoreAvailableDAO sdao = new StoreAvailableDAO();
-        sa=sdao.getSaByid(Integer.parseInt(pId));
-        
+        System.out.println(p);
         request.setAttribute("pro", p);
-        request.setAttribute("sa", sa);
-        request.getRequestDispatcher("new.html").forward(request, response);
+       
+        request.getRequestDispatcher("edit.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -11,7 +11,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Admin</title>
+<title>Bootstrap CRUD Data Table for Database with Modal Form</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -283,11 +283,11 @@ $(document).ready(function(){
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h2>Manage <b>Products</b></h2>
+                        <h2>Manage <b>Employees</b></h2>
                     </div>
                     <div class="col-sm-6">
-                        <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>
-                        <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Discount</span></a>						
+                        <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
+                        <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
                     </div>
                 </div>
             </div>
@@ -309,7 +309,7 @@ $(document).ready(function(){
                         <th>price</th>
                         <th>product_description</th>
                         <th>product_image</th>
-                        <th>quantity</th>
+<!--                        <th>store_id</th>-->
                     </tr>
                 </thead>
                 <tbody>
@@ -320,7 +320,7 @@ $(document).ready(function(){
                         <tr>
                         <td>
                             <span class="custom-checkbox">
-                                <input type="checkbox" id="checkbox1" name="options" value="1">
+                                <input type="checkbox" id="checkbox1" name="options[]" value="1">
                                 <label for="checkbox1"></label>
                             </span>
                         </td>
@@ -330,13 +330,11 @@ $(document).ready(function(){
                         <td>${o.price}</td>
                         <td>${o.description}</td>
                         <td><img src="${o.image}" style="width:80px;height:80px;"></td>
-                        <td>${o.quantity}</td>
                         <td>
-                            <a href="load?lid=${o.productID}" ><button  >edit</button></a>
+                            <a href="#editEmployeeModal" data-toggle="modal" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
 
-                            <a href="delete?oid=${o.productID}" ><button >delete</button></a>
-                            <a href="hide?oid=${o.productID}"><button >hide</button></a>
-                            <a href="show?oid=${o.productID}"><button >show</button></a>
+                            <a href="delete?oid=${o.productID}" class="delete" ><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                            <!--<a href="delete?oid=${o.productID}"><button >delete</button></a>-->
                         </td>
                     </tr>
                     </c:forEach>
@@ -415,8 +413,8 @@ $(document).ready(function(){
                         <div class="form-group">
                                 <label>availability</label>
                                 <select name="avail" id="avail">
-                                    <option value="1">Available</option>
-                                    <option value="0">Not available</option>
+                                    <option value="0">Available</option>
+                                    <option value="1">Not available</option>
                                 </select>
                         </div>
                         <div class="form-group">
@@ -435,7 +433,7 @@ $(document).ready(function(){
 </div>
 <!-- Edit Modal HTML -->
 
-<!--<div id="editEmployeeModal" class="modal fade">
+<div id="editEmployeeModal" class="modal fade">
         <div class="modal-dialog">
                 <div class="modal-content">
                         <form  action ="edit" >
@@ -480,10 +478,10 @@ $(document).ready(function(){
                                                 <label>product_image</label>
                                                 <input type="text" value ="pro.image" name="ai"class="form-control" required>
                                         </div>
-                                            <div class="form-group">
+                    <!--                        <div class="form-group">
                                                 <label>store_id</label>
                                                 <input type="text" class="form-control" required>
-                                        </div>
+                                        </div>-->
                                         <div class="form-group">
                                                 <label>quantity</label>
                                                 <input type="text" value ="sa.quantity" name="aq" class="form-control" required>
@@ -497,45 +495,28 @@ $(document).ready(function(){
                         </form>
                 </div>
         </div>
-</div>-->
+</div>
 
 <!-- Delete Modal HTML -->
-<div id="deleteEmployeeModal" class="modal fade">
+<!--<div id="deleteEmployeeModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form action ="discount" >
+			<form action ="delete">
 				<div class="modal-header">						
-					<h4 class="modal-title">Discount</h4>
+					<h4 class="modal-title">Delete Employee</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
-				<div class="form-group">
-                                    <label>Types</label>
-                                    <select name="type" id="avail">
-                                        <option value="1">Men's dresses</option>
-                                        <option value="2">Women's Dresses</option>
-                                        <option value="3">Baby's Dresses</option>
-                                        <option value="4">Shirts</option>
-                                        <option value="5">Jeans</option>
-                                        <option value="6">Swimwear</option>
-                                        <option value="7">Sleepwear</option>
-                                        <option value="8">Sportswear</option>
-                                        <option value="9">Jumpsuits</option>
-                                        <option value="10">Blazers</option>
-                                        <option value="11">Jackets</option>
-                                        <option value="12">Shoes</option>
-                                    </select>
-                                </div>
-                                 <div class="form-group">
-                                        <label>discount</label>
-                                        <input type="text" name="discount" class="form-control" required>
-                                </div>
+				<div class="modal-body">					
+					<p>Are you sure you want to delete these Records?</p>
+					<p class="text-warning"><small>This action cannot be undone.</small></p>
+				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-danger" value="Discount">
+					<input type="submit" class="btn btn-danger" value="Delete">
 				</div>
 			</form>
 		</div>
 	</div>
-</div>
+</div>-->
 </body>
 </html>

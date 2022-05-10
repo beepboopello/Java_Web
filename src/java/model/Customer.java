@@ -3,13 +3,15 @@ public class Customer {
     private int customerID;
     private String firstName, lastName, address,email,phone,username,password;
 
-    public Customer(int id, String firstName, String lastName, String address, String email, String phone) {
-        this.customerID = id;
+    public Customer( String firstName, String lastName, String address, String email, String phone, String username, String password) {
+        
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.address = address;
         this.phone = phone;
+        this.username = username;
+        this.password = password;
     }
 
     public Customer(int id, String firstName, String lastName, String address, String email, String phone, String username, String password) {
