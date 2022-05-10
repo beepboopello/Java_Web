@@ -18,7 +18,7 @@ public class DAO {
     }
 }
     public DAO() {
-        this("jdbc:sqlserver://localhost:1434;databaseName=BTL", "sa", "main");
+        this("jdbc:sqlserver://DESKTOP-PJI76B4\\SQLEXPRESS01:1433;databaseName=BTL", "saa", "1234");
     }
     public static void main(String[] args) {
         new DAO();

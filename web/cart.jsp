@@ -218,7 +218,7 @@
                                     <button type="submit" class="btn btn-sm btn-primary">
                                         <i class="fa fa-times"></i>
                                     </button>
-                                    <input type="hidden" name="itemid" value="${o.itemid}">
+                                    <input type="hidden" name="itemid" value="${o.itemID}">
                                 </form>
                             </td>
                         </tr>

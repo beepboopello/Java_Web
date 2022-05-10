@@ -55,10 +55,10 @@ public class LoginServlet extends HttpServlet {
         }
         else{
 
-            session.setAttribute("user", b);
-            request.getRequestDispatcher("admin").forward(request, response);
-//                    request.getAttribute("listp");
-            System.out.println(b);
+//            session.setAttribute("user", b);
+//            request.getRequestDispatcher("admin").forward(request, response);
+////                    request.getAttribute("listp");
+//            System.out.println(b);
             request.getRequestDispatcher("admin").forward(request, response);
 //            cai nay chuyen sang servlet đau co /
 
