@@ -362,7 +362,7 @@
                             <h5 class="font-weight-bold">Total</h5>
                             <h5 class="font-weight-bold">${pay+ship}</h5>
                         </div>
-                        <button class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button>
+                        <form action="checkout"><button class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button></form>
                     </div>
                 </div>
             </div>

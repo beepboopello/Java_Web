@@ -362,14 +362,31 @@ public class ProductDAO extends DAO{
             
         }
     }
+    public int getQuantity(String id){
+        String sql = "select quantity from product where product_id = ?";
+        ResultSet rs = null;
+        int quantity = 0;
+        try{
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, Integer.parseInt(id));
+            rs = ps.executeQuery();
+            rs.next();
+            quantity = rs.getInt("quantity");
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return quantity;
+    }
     public static void main(String[] args) {
         List<Product> list = new ArrayList<>();
         ProductDAO p =new ProductDAO();
 //        p.deleteProduct(11);
 //        list =p.getNewlist();
-        Product x=new Product(3,1,1, "quan", "1", "dd", "red", "M", "1", "quan", "1",1);
-        p.updateProduct(x);
-        p.updateAvail(5);
+//        Product x=new Product(3,1,1, "quan", "1", "dd", "red", "M", "1", "quan", "1",1);
+//        p.updateProduct(x);
+//        p.updateAvail(5);
+        System.out.println(Integer.toString(p.getQuantity("1")));
 //        p.addProduct(x);
 //           Product x=p.getP("1");
 //           System.out.println(x);

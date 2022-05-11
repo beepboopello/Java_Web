@@ -5,24 +5,22 @@
  */
 package controller;
 
-
-import DAO.ProductDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Product;
+import javax.servlet.http.HttpSession;
+import model.Customer;
+import model.OrderItem;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "HomeServlet", urlPatterns = {"/home"})
-public class HomeServlet extends HttpServlet {
+public class CheckOutServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,21 +33,21 @@ public class HomeServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-       
-        ProductDAO dao=new ProductDAO();
-        List<Product> list1 = new ArrayList<>();
-        list1= dao.getPlist();
-
-        List<Product> listN = new ArrayList<>();
-        listN= dao.getNewlist();
-        
-            request.setAttribute("listp", list1);
-            request.setAttribute("listn", listN);
-            request.getRequestDispatcher("index.jsp").forward(request, response);
-              
+        HttpSession session = request.getSession();
+        if(session.getAttribute("user")==null){
+            response.sendRedirect("login");
+            return;
         }
-    
+        if(session.getAttribute("cart")==null){
+            response.sendRedirect("home");
+            return;
+        }
+        ArrayList<OrderItem> list = (ArrayList<OrderItem>) session.getAttribute("cart");
+        request.setAttribute("cart", list);
+        response.setContentType("text/html;charset=UTF-8");
+        request.getRequestDispatcher("checkout.jsp").forward(request, response);
+        
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

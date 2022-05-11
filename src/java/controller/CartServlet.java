@@ -41,7 +41,6 @@ public class CartServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         ProductDAO dao = new ProductDAO();
         HttpSession session = request.getSession();
-        System.out.println(session.getAttribute("user"));
         if(session.getAttribute("user")==null){
             response.sendRedirect("login"); 
         } 
@@ -54,11 +53,15 @@ public class CartServlet extends HttpServlet {
         Product p = dao.getP(pid);
         items.setItemID(p.getProductID());
         items.setPrice(p.getPrice());
-        items.setDiscount(p.getDiscount());
+        items.setDiscount(p.getDiscount()); //
         items.setName(p.getName());
         items.setImg(p.getImage());
         String quantity = request.getParameter("quantity");
-        items.setQuantity(quantity!=null? Integer.parseInt(quantity):1);
+        if(quantity==null) quantity = "1";
+        if(Integer.parseInt(quantity)>dao.getQuantity(pid)){
+            return;
+        }
+        items.setQuantity(Integer.parseInt(quantity));
         if(list==null){
             list = new ArrayList<>();
             list.add(items);
@@ -66,11 +69,17 @@ public class CartServlet extends HttpServlet {
         boolean itemInList=false;
         for(OrderItem item : list){
             if(item.getItemID()==items.getItemID()){
+                if(dao.getQuantity(pid)<item.getQuantity()+items.getQuantity()){
+                    return;
+                }
                 item.setQuantity(item.getQuantity()+items.getQuantity());
-                System.out.println(item);
+                if(dao.getQuantity(pid)<item.getQuantity()){
+                    return;
+                }
                 itemInList=true;
             }
         }
+        System.out.println("hello khang");
         if(!itemInList) list.add(items);}
         session.setAttribute("cart", list);
         }
@@ -88,7 +97,6 @@ public class CartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         response.setContentType("text/html;charset=UTF-8");
             HttpSession session = request.getSession();
             if(session.getAttribute("user")==null){

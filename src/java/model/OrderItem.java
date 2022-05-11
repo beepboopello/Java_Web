@@ -1,6 +1,8 @@
 package model;
 
-public class OrderItem {
+import java.io.Serializable;
+
+public class OrderItem implements Serializable {
     private int itemID,orderID,productID,quantity;
     private String discount,name,img;
     private float price;
