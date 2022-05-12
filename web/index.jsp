@@ -140,7 +140,7 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
                             <a href="/BTLweb/home" class="nav-item nav-link active">Home</a>
-                            <a href="shop.jsp" class="nav-item nav-link">Shop</a>
+                            <a href="loadshop" class="nav-item nav-link">Shop</a>
                             <!--<a href="detail.jsp" class="nav-item nav-link">Shop Detail</a>-->
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
