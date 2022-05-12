@@ -208,30 +208,17 @@
                     </div>
                     <small class="pt-1">(50 Reviews)</small>
                 </div>
-                <h3 class="font-weight-semi-bold mb-4">${product.price}</h3>
+<!--                <h3 class="font-weight-semi-bold mb-4">${product.price}</h3><h3 class="text-muted ml-2"><del>${product.price}</del></h3>-->
+                <div class="d-flex justify-content-left">
+                    <h3>${product.price*product.discount/100}</h3><h3 class="text-muted ml-2"><del>${product.price}</del></h3>
+                </div>
                 <p class="mb-4">${product.description} </p>
                 <div class="d-flex mb-3">
                     <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
                     <form>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" class="custom-control-input" id="size-1" name="size">
-                            <label class="custom-control-label" for="size-1">XS</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="size-2" name="size">
-                            <label class="custom-control-label" for="size-2">S</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="size-3" name="size">
-                            <label class="custom-control-label" for="size-3">M</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="size-4" name="size">
-                            <label class="custom-control-label" for="size-4">L</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="size-5" name="size">
-                            <label class="custom-control-label" for="size-5">XL</label>
+                            <label class="custom-control-label" for="size-1">${product.size}</label>
                         </div>
                     </form>
                 </div>
@@ -240,9 +227,9 @@
                     <form>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" class="custom-control-input" id="color-1" name="color">
-                            <label class="custom-control-label" for="color-1">Black</label>
+                            <label class="custom-control-label" for="color-1">${product.color}</label>
                         </div>
-                        <div class="custom-control custom-radio custom-control-inline">
+<!--                        <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" class="custom-control-input" id="color-2" name="color">
                             <label class="custom-control-label" for="color-2">White</label>
                         </div>
@@ -257,7 +244,7 @@
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" class="custom-control-input" id="color-5" name="color">
                             <label class="custom-control-label" for="color-5">Green</label>
-                        </div>
+                        </div>-->
                     </form>
                 </div>
                 <div class="d-flex align-items-center mb-4 pt-2">

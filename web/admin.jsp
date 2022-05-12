@@ -286,7 +286,7 @@ $(document).ready(function(){
                         <h2>Manage <b>Products</b></h2>
                     </div>
                     <div class="col-sm-6">
-                        <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>
+                        <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">%</i> <span>Add New Product</span></a>
                         <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Discount</span></a>						
                     </div>
                 </div>
@@ -369,39 +369,60 @@ $(document).ready(function(){
                 </div>
                 <div class="modal-body">					
                         <div class="form-group">
-                                <label>Product_id</label>
+                                <label>Product id</label>
                                 <input type="text" name="aid" class="form-control" required>
                         </div>
                         <div class="form-group">
-                                <label>Product_name</label>
+                                <label>Product name</label>
                                 <input type="text" name="an" class="form-control" required>
                         </div>
                         <div class="form-group">
                                 <label>Category</label>
-                                <input type="text" name="acate"class="form-control" required>
+                                <select class="form-control" name="acate">
+                                    <option value="1">Men's dresses</option>
+                                    <option value="2">Women's Dresses</option>
+                                    <option value="3">Baby's Dresses</option>
+                                    <option value="4">Shirts</option>
+                                    <option value="5">Jeans</option>
+                                    <option value="6">Swimwear</option>
+                                    <option value="7">Sleepwear</option>
+                                    <option value="8">Sportswear</option>
+                                    <option value="9">Jumpsuits</option>
+                                    <option value="10">Blazers</option>
+                                    <option value="11">Jackets</option>
+                                    <option value="12">Shoes</option>  
+                                </select>
                         </div>
                         <div class="form-group">
                                 <label>Brand</label>
                                 <input type="text" name="ab" class="form-control" required>
                         </div>
                         <div class="form-group">
-                                <label>color</label>
-                                <input type="text" name="acolor"class="form-control" required>
+                                <label>Color</label>
+                                <input type="color" name="acolor" class="form-control" required>
                         </div>
                         <div class="form-group">
-                                <label>size</label>
-                                <input type="text" name="as" class="form-control" required>
+                                <label>Size</label>
+                                <select class="form-control" name="as">
+                                    <option value="XS">XS</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                    <option value="XXL">XXL</option>
+                                    <option value="XXXL">XXXL</option>   
+                                </select>
                         </div>
                         <div class="form-group">
-                                <label>price</label>
-                                <input type="text" name="ap"class="form-control" required>
+                                <label>Price</label>
+                                <input style="-webkit-appearance: none; margin: 0;" type="text" name="ap"class="form-control" required>
                         </div>
                         <div class="form-group">
-                                <label>product_description</label>
+                                <label>Product description</label>
                                 <input type="text" name="ades" class="form-control" required>
                         </div>
                         <div class="form-group">
-                                <label>product_image</label>
+                                <label>Product image</label>
                                 <input type="text" name="ai"class="form-control" required>
                         </div>
 <!--                        <div class="form-group">
@@ -409,19 +430,19 @@ $(document).ready(function(){
                                 <input type="text" class="form-control" required>
                         </div>-->
                         <div class="form-group">
-                                <label>quantity</label>
-                                <input type="text" name="aq" class="form-control" required>
+                                <label>Quantity</label>
+                                <input style="-webkit-appearance: none; margin: 0;" type="number" name="aq" class="form-control" min="0" required>
                         </div>
                         <div class="form-group">
-                                <label>availability</label>
-                                <select name="avail" id="avail">
+                                <label>Availability</label>
+                                <select class="form-control" name="avail" id="avail">
                                     <option value="1">Available</option>
                                     <option value="0">Not available</option>
                                 </select>
                         </div>
                         <div class="form-group">
-                                <label>discount</label>
-                                <input type="text" name="pdis" class="form-control" required>
+                                <label>Discount</label>
+                                <input style="-webkit-appearance: none; margin: 0;" type="number" name="pdis" class="form-control" required min="0" max="99" placeholder="%"> 
                         </div>
                         				
                 </div>
@@ -508,9 +529,10 @@ $(document).ready(function(){
 					<h4 class="modal-title">Discount</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
+                                <div class="modal-body">
 				<div class="form-group">
                                     <label>Types</label>
-                                    <select name="type" id="avail">
+                                    <select class="form-control" name="type" id="avail">
                                         <option value="1">Men's dresses</option>
                                         <option value="2">Women's Dresses</option>
                                         <option value="3">Baby's Dresses</option>
@@ -533,6 +555,7 @@ $(document).ready(function(){
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
 					<input type="submit" class="btn btn-danger" value="Discount">
 				</div>
+                                </div>
 			</form>
 		</div>
 	</div>

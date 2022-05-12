@@ -140,7 +140,7 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
                             <a href="/BTLweb/home" class="nav-item nav-link active">Home</a>
-                            <a href="loadshop" class="nav-item nav-link">Shop</a>
+                            <a href="shop.jsp" class="nav-item nav-link">Shop</a>
                             <!--<a href="detail.jsp" class="nav-item nav-link">Shop Detail</a>-->
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
@@ -338,9 +338,9 @@
                     </div>
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3">${o.name}</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>${o.price}</h6><h6 class="text-muted ml-2"><del>${o.price}</del></h6>
-                        </div>
+                            <div class="d-flex justify-content-center">
+                                <h6>${o.price*o.discount/100}</h6><h6 class="text-muted ml-2"><del>${o.price}</del></h6>
+                            </div>
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
                         <a href="detail?pid=${o.productID}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
