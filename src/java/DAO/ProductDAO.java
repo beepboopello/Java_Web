@@ -88,6 +88,18 @@ public class ProductDAO extends DAO{
             e.printStackTrace();
         }
     }
+    public void updateQuantiry(int id, int amount){
+    String sql = "UPDATE [dbo].[product] SET quantity = quantity - ? where product_id=?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1,amount);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+        }
+        catch (SQLException e) {
+                e.printStackTrace();
+            }
+}
     
     public List<Product> getPlist(){
         List<Product> list = new ArrayList<>();
@@ -122,9 +134,11 @@ public class ProductDAO extends DAO{
                         pdiscount,
                         pprice
                 );
+                System.out.println(p);
                 list.add(p);
             }
         } catch (SQLException e) {
+            e.printStackTrace();
         }
         return list;
     }
@@ -170,45 +184,6 @@ public class ProductDAO extends DAO{
     public List<Product> getNewlist(){
         List<Product> list = new ArrayList<>();
         String sql = "select top 4 * from product where availability=1 order by product_id desc";
-        try {
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-                int pid = rs.getInt("product_id");
-                String pname = rs.getString("product_name");
-                String pcategory = rs.getString("category");
-                String pbrand = rs.getString("brand");
-                String pcolor = rs.getString("color");
-                String psize = rs.getString("size");
-                float  pprice = rs.getFloat("price");
-                String pdescription = rs.getString("product_description");
-                String pimage = rs.getString("product_image");
-                String pdiscount = rs.getString("discount");
-                int pquantity = rs.getInt("quantity");
-                int pavailability = rs.getInt("availability");
-                Product p = new Product(
-                        pid,
-                        pquantity,
-                        pavailability,
-                        pname,
-                        pcategory,
-                        pbrand,
-                        pcolor,
-                        psize, 
-                        pdescription,
-                        pimage,
-                        pdiscount,
-                        pprice
-                );
-                list.add(p);
-            }
-        } catch (SQLException e) {
-        }
-        return list;
-    }
-    public List<Product> getPricelist(){
-        List<Product> list = new ArrayList<>();
-        String sql = "select top 4 * from product where availability=1 order by price";
         try {
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -370,45 +345,6 @@ public class ProductDAO extends DAO{
         }
         return list;
     }
-    public List<Product> searchcolor(String name){
-        List<Product> list = new ArrayList<>();
-        String sql = "SELECT * FROM product WHERE color LIKE '%" + name + "%'";
-        try {
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-                int pid = rs.getInt("product_id");
-                String pname = rs.getString("product_name");
-                String pcategory = rs.getString("category");
-                String pbrand = rs.getString("brand");
-                String pcolor = rs.getString("color");
-                String psize = rs.getString("size");
-                float  pprice = rs.getFloat("price");
-                String pdescription = rs.getString("product_description");
-                String pimage = rs.getString("product_image");
-                String pdiscount = rs.getString("discount");
-                int pquantity = rs.getInt("quantity");
-                int pavailability = rs.getInt("availability");
-                Product p = new Product(
-                        pid,
-                        pquantity,
-                        pavailability,
-                        pname,
-                        pcategory,
-                        pbrand,
-                        pcolor,
-                        psize, 
-                        pdescription,
-                        pimage,
-                        pdiscount,
-                        pprice
-                );
-                list.add(p);
-            }
-        } catch (SQLException e) {
-        }
-        return list;
-    }
     public void updateHide(int id){
         String sql = "update product set availability =0 where product_id=?";
          try {
@@ -457,14 +393,18 @@ public class ProductDAO extends DAO{
         return quantity;
     }
     public static void main(String[] args) {
-        List<Product> list = new ArrayList<>();
+//        List<Product> list = new ArrayList<>();
         ProductDAO p =new ProductDAO();
-//        p.deleteProduct(11);
-//        list =p.getNewlist();
+p.updateQuantiry(1,2 );
+//        list =p.getPlist();
+//        for(Product product:list){
+//System.out.println(product);;
+//
+//}
 //        Product x=new Product(3,1,1, "quan", "1", "dd", "red", "M", "1", "quan", "1",1);
 //        p.updateProduct(x);
 //        p.updateAvail(5);
-        System.out.println(Integer.toString(p.getQuantity("1")));
+//        System.out.println(Integer.toString(p.getQuantity("1")));
 //        p.addProduct(x);
 //           Product x=p.getP("1");
 //           System.out.println(x);

@@ -34,7 +34,7 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body data-fname="${user.firstName}">
+<body>
     <!-- Topbar Start -->
     <div class="container-fluid">
         <div class="row bg-secondary py-2 px-xl-5">
@@ -187,6 +187,7 @@
         }
     </script>
     <!-- Checkout Start -->
+    <form action="checkout" method="POST">
     <div class="container-fluid pt-5">
         <div class="row px-xl-5">
             <div class="col-lg-8">
@@ -196,26 +197,26 @@
                         
                         <div class="col-md-6 form-group">
                             <label>First Name</label>
-                            <input id="varname1" class="form-control" required type="text" placeholder="John">
+                            <input name="firstname" id="varname1" class="form-control" required type="text" placeholder="John">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Last Name</label>
-                            <input id="varname2" class="form-control" required type="text" placeholder="Doe">
+                            <input name="lastname" id="varname2" class="form-control" required type="text" placeholder="Doe">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>E-mail</label>
-                            <input id="varemail" class="form-control" required type="text" placeholder="example@email.com">
+                            <input name="email" id="varemail" class="form-control" required type="text" placeholder="example@email.com">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Mobile No</label>
-                            <input id="varphone" class="form-control" required type="text" placeholder="+123 456 789">
+                            <input name="phone" id="varphone" class="form-control" required type="text" placeholder="+123 456 789">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Address</label>
-                            <input id="varaddress" class="form-control" required type="text" placeholder="Please specify your whole address">
+                            <input name="address" id="varaddress" class="form-control" required type="text" placeholder="Please specify your whole address">
                         </div>
                     </div>
-                    <button class="btn border" onclick="autoFill();">
+                    <button type="button" class="btn border" onclick="autoFill();">
                         Use my profile
                     </button>
                     </div>
@@ -230,10 +231,13 @@
                         <c:forEach items="${cart}" var = "p">
                             <div class="d-flex justify-content-between">
                             <p>${p.name}</p>
-                            <p>${p.price}</p>
+                            <c:set var="itemsPrice" value="${p.price*(100-p.discount)*p.quantity/100}"/>
+                            <p>${itemsPrice}</p>
                         </div>
-                        <c:set var="total" value="${total+p.price}"/>
+                        <c:set var="total" value="${total+itemsPrice}"/>
+                        <c:set var="shipping" value="10000"/>
                         </c:forEach>
+                        <input type="hidden" name="total" value="${total+shipping}">
                         <hr class="mt-0">
                         <div class="d-flex justify-content-between mb-3 pt-1">
                             <h6 class="font-weight-medium">Subtotal</h6>
@@ -241,13 +245,13 @@
                         </div>
                         <div class="d-flex justify-content-between">
                             <h6 class="font-weight-medium">Shipping</h6>
-                            <h6 class="font-weight-medium">10000.0</h6>
+                            <h6 class="font-weight-medium">${shipping}</h6>
                         </div>
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
                         <div class="d-flex justify-content-between mt-2">
                             <h5 class="font-weight-bold">Total</h5>
-                            <h5 class="font-weight-bold">${total+10000}</h5>
+                            <h5 class="font-weight-bold">${total+shipping}</h5>
                         </div>
                     </div>
                 </div>
@@ -258,30 +262,25 @@
                     <div class="card-body">
                         <div class="form-group">
                             <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="paypal">
-                                <label class="custom-control-label" for="paypal">Paypal</label>
+                                <input type="radio" class="custom-control-input" name="payment" id="cash" value="cash" required>
+                                <label class="custom-control-label" for="cash">Cash</label>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="directcheck">
-                                <label class="custom-control-label" for="directcheck">Direct Check</label>
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="banktransfer">
-                                <label class="custom-control-label" for="banktransfer">Bank Transfer</label>
+                                <input type="radio" class="custom-control-input" name="payment" id="credit" value="credit">
+                                <label class="custom-control-label" for="credit">Credit card</label>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
-                        <button class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3">Place Order</button>
+                        <button type="submit" class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3">Place Order</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </form>              
     <!-- Checkout End -->
 
 

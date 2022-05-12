@@ -51,9 +51,9 @@ public class CartServlet extends HttpServlet {
         return;}
         OrderItem items = new OrderItem();
         Product p = dao.getP(pid);
-        items.setItemID(p.getProductID());
+        items.setProductID(p.getProductID());
         items.setPrice(p.getPrice());
-        items.setDiscount(p.getDiscount()); //
+        items.setDiscount(p.getDiscount());
         items.setName(p.getName());
         items.setImg(p.getImage());
         String quantity = request.getParameter("quantity");
@@ -68,11 +68,12 @@ public class CartServlet extends HttpServlet {
         }else{
         boolean itemInList=false;
         for(OrderItem item : list){
-            if(item.getItemID()==items.getItemID()){
+            if(item.getProductID()==items.getProductID()){
                 if(dao.getQuantity(pid)<item.getQuantity()+items.getQuantity()){
                     return;
                 }
                 item.setQuantity(item.getQuantity()+items.getQuantity());
+                System.out.println("Order this amount: " + item.getQuantity());
                 if(dao.getQuantity(pid)<item.getQuantity()){
                     return;
                 }

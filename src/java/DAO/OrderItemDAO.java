@@ -11,22 +11,22 @@ import model.OrderItem;
 public class OrderItemDAO extends DAO{
     public void addItem(OrderItem item){
         String sql = "INSERT INTO [dbo].[order_item]" +
-"           ([item_id]" +
-"           ,[order_id]" +
+"           ([order_id]" +
 "           ,[product_id]" +
 "           ,[quantity]" +
 "           ,[discount]" +
 "           ,[price])" +
-"     VALUES(?,?,?,?,?,?,?)";
+"     VALUES(?,?,?,?,?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, item.getItemID());
-            ps.setInt(2, item.getOrderID());
-            ps.setInt(3, item.getProductID());
-            ps.setLong(4, item.getQuantity());
-            ps.setString(5, item.getDiscount());
+            ps.setInt(1, item.getOrderID());
+            ps.setInt(2, item.getProductID());
+            ps.setLong(3, item.getQuantity());
+            ps.setString(4, item.getDiscount());
+            ps.setFloat(5, item.getPrice());
             ps.executeUpdate();
         } catch (SQLException e) {
+e.printStackTrace();
         }
     }
     public void updateItem(OrderItem item){

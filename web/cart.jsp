@@ -175,7 +175,6 @@
     </div>
     <!-- Page Header End -->
 
-
     <!-- Cart Start -->
     <div class="container-fluid pt-5">
         <div class="row px-xl-5">
@@ -193,8 +192,9 @@
                     <tbody>
                         <c:forEach items = "${cart}" var = "o">
                         <tr>
+                            <c:set var="productPrice" value="${o.price*(100-o.discount)/100}"/>
                             <td class="align-middle"><img src="${o.img}" alt="" style="width: 50px;"> ${o.name}</td>
-                            <td class="align-middle">${o.price}</td>
+                            <td class="align-middle">${productPrice}</td>
                             <td class="align-middle">
                                 <div class="input-group quantity mx-auto" style="width: 100px;">
                                     <div class="input-group-btn">
@@ -210,7 +210,7 @@
                                     </div>
                                 </div>
                             </td>
-                            <c:set var="total" value="${o.price*o.quantity}"/>
+                            <c:set var="total" value="${productPrice*o.quantity}"/>
                             <c:set var="pay" value="${pay+total}"/>
                             <td class="align-middle"><c:out value="${total}"/></td>
                             <td class="align-middle">

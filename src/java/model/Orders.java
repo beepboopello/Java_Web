@@ -1,73 +1,94 @@
 package model;
 public class Orders {
-    private int orderID,customerID,storeID,sellerID;
-    private String status, order_date;
+    private int customerID;
+    private String firstName,lastName,email,phone,address,orderDate,status;
+    private Float total;
 
-    public Orders(int orderID, int customerID, int storeID, int sellerID, String order_date, String status) {
-        this.orderID = orderID;
+    public Orders(int customerID, String firstName, String lastName, String email, String phone, String address, String orderDate, String status, Float total) {
         this.customerID = customerID;
-        this.storeID = storeID;
-        this.sellerID = sellerID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.orderDate = orderDate;
         this.status = status;
-        this.order_date = order_date;
-    }
-    public Orders(){
-    }
-
-    public int getOrderID() {
-        return orderID;
+        this.total = total;
     }
 
     public int getCustomerID() {
         return customerID;
     }
 
-    public int getStoreID() {
-        return storeID;
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
     }
 
-    public int getSellerID() {
-        return sellerID;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(String orderDate) {
+        this.orderDate = orderDate;
     }
 
     public String getStatus() {
         return status;
     }
 
-    public String getOrder_date() {
-        return order_date;
-    }
-
-    public void setOrderID(int orderID) {
-        this.orderID = orderID;
-    }
-
-    public void setCustomerID(int customerID) {
-        this.customerID = customerID;
-    }
-
-    public void setStoreID(int storeID) {
-        this.storeID = storeID;
-    }
-
-    public void setSellerID(int sellerID) {
-        this.sellerID = sellerID;
-    }
-
     public void setStatus(String status) {
         this.status = status;
     }
 
-    public void setOrder_date(String order_date) {
-        this.order_date = order_date;
+    public Float getTotal() {
+        return total;
     }
-    @Override
-    public String toString(){
-        return "Order " + getOrderID() + ": "
-                + getCustomerID() + " "
-                + getOrder_date() + " "
-                + getStoreID()+ " "
-                + getSellerID()+ " "
-                + getStatus();
+
+    public void setTotal(Float total) {
+        this.total = total;
     }
+//    @Override
+//    public String toString(){
+//        return firstName + " " + lastName + " " + orderDate + " " + Float.toString(total);
+//    }
 }
