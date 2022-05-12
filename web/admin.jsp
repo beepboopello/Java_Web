@@ -286,8 +286,8 @@ $(document).ready(function(){
                         <h2>Manage <b>Products</b></h2>
                     </div>
                     <div class="col-sm-6">
-                        <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">%</i> <span>Add New Product</span></a>
-                        <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Discount</span></a>						
+                        <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>
+                        <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xeb58;</i> <span>Discount</span></a>						
                     </div>
                 </div>
             </div>
@@ -399,7 +399,13 @@ $(document).ready(function(){
                         </div>
                         <div class="form-group">
                                 <label>Color</label>
-                                <input type="color" name="acolor" class="form-control" required>
+                                <select class="form-control" name="acolor">
+                                    <option value="Black">Black</option>
+                                    <option value="White">White</option>
+                                    <option value="Red">Red</option>
+                                    <option value="Blue">Blue</option>
+                                    <option value="Green">Green</option>
+                                </select>
                         </div>
                         <div class="form-group">
                                 <label>Size</label>
