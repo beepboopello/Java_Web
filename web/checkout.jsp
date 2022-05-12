@@ -185,9 +185,38 @@
             document.getElementById('varphone').value = "<%=customer.getPhone()%>";
             document.getElementById('varaddress').value = "<%=customer.getAddress()%>";
         }
+        function checkForm(){
+            if (document.getElementById('varname1').value.trim() === '') return false;
+            if (document.getElementById('varname2').value.trim() ==='') return false;
+            if (document.getElementById('varemail').value.trim() ==='') return false;
+            if (document.getElementById('varphone').value.trim() ==='') return false;
+            if (document.getElementById('varaddress').value.trim() ==='') return false;
+            return true;
+        }
+        function checkForm_credit(){
+            if (document.getElementById('varcardnum').value.trim() === '') return false;
+            if (document.getElementById('varcardname').value.trim() ==='') return false;
+            if (document.getElementById('varcardcode').value.trim() ==='') return false;
+            return true;
+        }
+        function handleCredit(){
+            if (!checkForm_credit()) return null;
+            document.getElementById('checkoutForm').submit();
+        }
+        function handlePayment(){
+            if(!checkForm()) return null;
+            if(document.getElementById('cash').checked){
+                document.getElementById('checkoutForm').submit();
+            }
+            else if(document.getElementById('credit').checked){
+                document.getElementById("showmodal").click();
+            }
+            return null;
+        }
     </script>
+      
     <!-- Checkout Start -->
-    <form action="checkout" method="POST">
+    <form action="checkout" method="POST" id="checkoutForm">
     <div class="container-fluid pt-5">
         <div class="row px-xl-5">
             <div class="col-lg-8">
@@ -274,7 +303,8 @@
                         </div>
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
-                        <button type="submit" class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3">Place Order</button>
+                        <button onclick="handlePayment();" type="button" class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3">Place Order</button>
+                        <button type="button" id="showmodal" hidden="hidden" data-toggle="modal" data-target="#modalCreditCardForm" ></button>
                     </div>
                 </div>
             </div>
@@ -283,7 +313,104 @@
     </form>              
     <!-- Checkout End -->
 
+  <div class="modal fade" id="modalCreditCardForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <!--Content-->
+      <div class="modal-content">
+        <!--Header-->
+        <div class="modal-header">
+          <h4 class="my-1"><strong>Check out</strong></h4>
 
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <!--Body-->
+        <div class="modal-body">
+          <form action="">
+            <div class="row">
+              <div class="col-md-6">
+                <!-- Default input -->
+                <label for="exampleForm3" class="mb-1 mt-3">Card number</label>
+                <input type="text" id="varcardnum" class="form-control" placeholder="4024 0071 0393 9509">
+              </div>
+              <div class="col-md-6">
+                <label for="exampleForm2" class="mb-1 mt-3">Expiration (MM/YYYY)</label>
+                <div class="d-flex justify-content-between">
+                  <select class="browser-default custom-select">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3" selected>3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                  </select>
+                  <div class="forwardslash">/</div>
+                  <select class="browser-default custom-select">
+                    <option value="2022" selected>2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <!-- Default input -->
+                <label for="exampleForm2" class="mb-1 mt-3">Name on card</label>
+                <input type="text" id="varcardname" class="form-control" placeholder="Johnny Silverhand" >
+              </div>
+              <div class="col-md-6">
+                <label for="basic-addon3" class="mb-1 mt-3">Card Code CVC</label>
+                <div class="input-group mb-3">
+                  <input type="text" id="varcardcode" class="form-control" aria-label="Card Code CVC" placeholder="420" aria-describedby="basic-addon3">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2"><i class="fas fa-credit-card mx-05"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="font-weight-bold float-right my-2">Payment amount: </p>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">VND</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="150640" value="${total+shipping}" aria-describedby="basic-addon2" disabled>
+                </div>
+              </div>
+            </div>
+
+          </form>
+
+        </div>
+
+        <!--Footer-->
+        <div class="modal-footer float-right">
+          <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" onclick="handleCredit();">Confirm payment</button>
+        </div>
+      </div>
+      <!--/.Content-->
+    </div>
+  </div>
     <!-- Footer Start -->
     <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
         <div class="row px-xl-5 pt-5">

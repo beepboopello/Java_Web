@@ -110,11 +110,8 @@ public class CheckOutServlet extends HttpServlet {
             dao3.updateQuantiry(item.getProductID(), item.getQuantity());
             session.setAttribute("cart",null);
         }
-        String payment = request.getParameter("payment");
-            if(payment.compareTo("cash")==0){
-            response.sendRedirect("home");
-        }
-        else request.getRequestDispatcher("credit.jsp").forward(request, response);
+        response.sendRedirect("home");
+        
     }
 
     /**
