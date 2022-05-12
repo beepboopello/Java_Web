@@ -376,6 +376,47 @@ public class ProductDAO extends DAO{
             
         }
     }
+    public List<Product> getListFromQuery(String sql){
+        List<Product> list = new ArrayList<>();
+        try {
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                int pid = rs.getInt("product_id");
+                String pname = rs.getString("product_name");
+                String pcategory = rs.getString("category");
+                String pbrand = rs.getString("brand");
+                String pcolor = rs.getString("color");
+                String psize = rs.getString("size");
+                float  pprice = rs.getFloat("price");
+                String pdescription = rs.getString("product_description");
+                String pimage = rs.getString("product_image");
+                String pdiscount = rs.getString("discount");
+                int pquantity = rs.getInt("quantity");
+                int pavailability = rs.getInt("availability");
+                Product p = new Product(
+                        pid,
+                        pquantity,
+                        pavailability,
+                        pname,
+                        pcategory,
+                        pbrand,
+                        pcolor,
+                        psize, 
+                        pdescription,
+                        pimage,
+                        pdiscount,
+                        pprice
+                );
+                System.out.println(p);
+                list.add(p);
+            }
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        return list;
+    }
     public int getQuantity(String id){
         String sql = "select quantity from product where product_id = ?";
         ResultSet rs = null;
@@ -395,7 +436,7 @@ public class ProductDAO extends DAO{
     public static void main(String[] args) {
 //        List<Product> list = new ArrayList<>();
         ProductDAO p =new ProductDAO();
-p.updateQuantiry(1,2 );
+p.getListFromQuery("SELECT * FROM dbo.product WHERE 1=1 AND (1=0 OR price BETWEEN 0 AND 50000  OR price BETWEEN 50000 AND 200000  OR price BETWEEN 200000 AND 500000  OR price BETWEEN 500000 AND 1000000  OR price > 1000000) ");
 //        list =p.getPlist();
 //        for(Product product:list){
 //System.out.println(product);;

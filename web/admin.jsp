@@ -555,7 +555,7 @@ $(document).ready(function(){
                                 </div>
                                  <div class="form-group">
                                         <label>discount</label>
-                                        <input type="text" name="discount" class="form-control" required>
+                                        <input type="number" name="discount" class="form-control" required min="0" max="99">
                                 </div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">

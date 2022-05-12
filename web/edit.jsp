@@ -292,7 +292,20 @@ $(document).ready(function(){
                     </div>
                     <div class="form-group">
                             <label>Category</label>
-                            <input type="text" value ="${pro.category}" name="acate"class="form-control" required>
+                            <select class="form-control" name="acate">
+                                        <option value="1">Men's dresses</option>
+                                        <option value="2">Women's Dresses</option>
+                                        <option value="3">Baby's Dresses</option>
+                                        <option value="4">Shirts</option>
+                                        <option value="5">Jeans</option>
+                                        <option value="6">Swimwear</option>
+                                        <option value="7">Sleepwear</option>
+                                        <option value="8">Sportswear</option>
+                                        <option value="9">Jumpsuits</option>
+                                        <option value="10">Blazers</option>
+                                        <option value="11">Jackets</option>
+                                        <option value="12">Shoes</option>
+                                    </select>
                     </div>    
                     <div class="form-group">
                    <label>Brand</label>
@@ -300,15 +313,29 @@ $(document).ready(function(){
                     </div>
                     <div class="form-group">
                             <label>color</label>
-                            <input type="text" value ="${pro.color}" name="acolor"class="form-control" required>
+                            <select class="form-control" name="acolor">
+                                    <option value="Black">Black</option>
+                                    <option value="White">White</option>
+                                    <option value="Red">Red</option>
+                                    <option value="Blue">Blue</option>
+                                    <option value="Green">Green</option>
+                                </select>
                     </div>
                     <div class="form-group">
                             <label>size</label>
-                            <input type="text" value ="${pro.size}" name="as" class="form-control" required>
+                            <select class="form-control" name="as">
+                                    <option value="XS">XS</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                    <option value="XXL">XXL</option>
+                                    <option value="XXXL">XXXL</option>   
+                                </select>
                     </div>
                     <div class="form-group">
                             <label>price</label>
-                            <input type="text" value ="${pro.price}" name="ap"class="form-control" required>
+                            <input type="number" value ="${pro.price}" name="ap"class="form-control" required>
                     </div>
                     <div class="form-group">
                             <label>product_description</label>
@@ -316,7 +343,7 @@ $(document).ready(function(){
                     </div>
                     <div class="form-group">
                             <label>product_discount</label>
-                            <input type="text" value ="${pro.discount}" name="adis" class="form-control" required>
+                            <input type="number" value ="${pro.discount}" name="adis" class="form-control"  max="100" min="0" required>
                     </div>
                     <div class="form-group">
                             <label>product_quantity</label>
@@ -332,7 +359,7 @@ $(document).ready(function(){
                     </div>-->
                         <div class="form-group">
                                 <label>availability</label>
-                                <select name="avail" id="avail">
+                                <select class="form-control" name="avail" id="avail">
                                     <option value="1">Available</option>
                                     <option value="0">Not available</option>
                                 </select>
