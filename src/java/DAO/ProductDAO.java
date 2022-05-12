@@ -206,6 +206,45 @@ public class ProductDAO extends DAO{
         }
         return list;
     }
+    public List<Product> getPricelist(){
+        List<Product> list = new ArrayList<>();
+        String sql = "select top 4 * from product where availability=1 order by price";
+        try {
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                int pid = rs.getInt("product_id");
+                String pname = rs.getString("product_name");
+                String pcategory = rs.getString("category");
+                String pbrand = rs.getString("brand");
+                String pcolor = rs.getString("color");
+                String psize = rs.getString("size");
+                float  pprice = rs.getFloat("price");
+                String pdescription = rs.getString("product_description");
+                String pimage = rs.getString("product_image");
+                String pdiscount = rs.getString("discount");
+                int pquantity = rs.getInt("quantity");
+                int pavailability = rs.getInt("availability");
+                Product p = new Product(
+                        pid,
+                        pquantity,
+                        pavailability,
+                        pname,
+                        pcategory,
+                        pbrand,
+                        pcolor,
+                        psize, 
+                        pdescription,
+                        pimage,
+                        pdiscount,
+                        pprice
+                );
+                list.add(p);
+            }
+        } catch (SQLException e) {
+        }
+        return list;
+    }
     public List<Product> getClist(String cid){
         List<Product> list = new ArrayList<>();
         String sql = "SELECT * FROM product where category = ? and availability = 1 ";
@@ -295,6 +334,45 @@ public class ProductDAO extends DAO{
     public List<Product> searchProduct(String name){
         List<Product> list = new ArrayList<>();
         String sql = "SELECT * FROM product WHERE product_name LIKE '%" + name + "%'";
+        try {
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                int pid = rs.getInt("product_id");
+                String pname = rs.getString("product_name");
+                String pcategory = rs.getString("category");
+                String pbrand = rs.getString("brand");
+                String pcolor = rs.getString("color");
+                String psize = rs.getString("size");
+                float  pprice = rs.getFloat("price");
+                String pdescription = rs.getString("product_description");
+                String pimage = rs.getString("product_image");
+                String pdiscount = rs.getString("discount");
+                int pquantity = rs.getInt("quantity");
+                int pavailability = rs.getInt("availability");
+                Product p = new Product(
+                        pid,
+                        pquantity,
+                        pavailability,
+                        pname,
+                        pcategory,
+                        pbrand,
+                        pcolor,
+                        psize, 
+                        pdescription,
+                        pimage,
+                        pdiscount,
+                        pprice
+                );
+                list.add(p);
+            }
+        } catch (SQLException e) {
+        }
+        return list;
+    }
+    public List<Product> searchcolor(String name){
+        List<Product> list = new ArrayList<>();
+        String sql = "SELECT * FROM product WHERE color LIKE '%" + name + "%'";
         try {
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(sql);

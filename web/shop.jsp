@@ -184,7 +184,7 @@
             <div class="col-lg-3 col-md-12">
                 <!-- Price Start -->
                 <div class="border-bottom mb-4 pb-4">
-                    <h5 class="font-weight-semi-bold mb-4">Filter by price</h5>
+<!--                    <h5 class="font-weight-semi-bold mb-4">Filter by price</h5>
                     <form>
                         <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                             <input type="checkbox" class="custom-control-input" checked id="price-all">
@@ -194,8 +194,8 @@
                         <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                             <input type="checkbox" class="custom-control-input" id="price-1">
                             <label class="custom-control-label" for="price-1">$0 - $100</label>
-                            <span class="badge border font-weight-normal">150</span>
-                        </div>
+                            <span class="badge border font-weight-normal">150</span>-->
+<!--                        </div>
                         <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                             <input type="checkbox" class="custom-control-input" id="price-2">
                             <label class="custom-control-label" for="price-2">$100 - $200</label>
@@ -211,19 +211,19 @@
                             <label class="custom-control-label" for="price-4">$300 - $400</label>
                             <span class="badge border font-weight-normal">145</span>
                         </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                            <input type="checkbox" class="custom-control-input" id="price-5">
-                            <label class="custom-control-label" for="price-5">$400 - $500</label>
-                            <span class="badge border font-weight-normal">168</span>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">-->
+<!--                            <input type="checkbox" class="custom-control-input" id="price-5">
+                            <label class="custom-control-label" for="price-5">$400 - $500</label>-->
+<!--                            <span class="badge border font-weight-normal">168</span>
                         </div>
                     </form>
                 </div>
-                <!-- Price End -->
+                 Price End 
                 
-                <!-- Color Start -->
-                <div class="border-bottom mb-4 pb-4">
+                 Color Start 
+                <div class="border-bottom mb-4 pb-4">-->
                     <h5 class="font-weight-semi-bold mb-4">Filter by color</h5>
-                    <form>
+<!--                    <form action="filterColor">
                         <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                             <input type="checkbox" class="custom-control-input" checked id="color-all">
                             <label class="custom-control-label" for="price-all">All Color</label>
@@ -254,6 +254,18 @@
                             <label class="custom-control-label" for="color-5">Green</label>
                             <span class="badge border font-weight-normal">168</span>
                         </div>
+                    </form>-->
+                    
+                    <form action="filterbycolor" method="POST">
+                        <input type="checkbox" name="chonmau" value="red" /> Red<br/><br/>
+                        <input type="checkbox" name="chonmau" value="green" /> Green<br/><br/>
+                        <input type="checkbox" name="chonmau" value="blue" /> Blue<br/><br/>
+                        <input type="checkbox" name="chonmau" value="yellow" /> Yellow<br/><br/> 
+                        <input type="checkbox" name="chonmau" value="black" /> Black<br/><br/>
+                        <input type="checkbox" name="chonmau" value="white" /> White<br/><br/>
+                        <input type="checkbox" name="chonmau" value="pink" /> Pink<br/><br/>
+                        <input type="submit" value="Submit" /><br/>
+
                     </form>
                 </div>
                 <!-- Color End -->
@@ -261,7 +273,7 @@
                 <!-- Size Start -->
                 <div class="mb-5">
                     <h5 class="font-weight-semi-bold mb-4">Filter by size</h5>
-                    <form>
+<!--                    <form>
                         <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                             <input type="checkbox" class="custom-control-input" checked id="size-all">
                             <label class="custom-control-label" for="size-all">All Size</label>
@@ -272,8 +284,8 @@
                             <label class="custom-control-label" for="size-1">XS</label>
                             <span class="badge border font-weight-normal">150</span>
                         </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="size-2">
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">-->
+<!--                            <input type="checkbox" class="custom-control-input" id="size-2">
                             <label class="custom-control-label" for="size-2">S</label>
                             <span class="badge border font-weight-normal">295</span>
                         </div>
@@ -289,9 +301,19 @@
                         </div>
                         <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
                             <input type="checkbox" class="custom-control-input" id="size-5">
-                            <label class="custom-control-label" for="size-5">XL</label>
-                            <span class="badge border font-weight-normal">168</span>
+                            <label class="custom-control-label" for="size-5">XL</label>-->
+<!--                            <span class="badge border font-weight-normal">168</span>
                         </div>
+                    </form>-->
+                        <form action="filterbycolor" method="POST">
+                        <input type="checkbox" name="chonsize" value="S" /> S<br/><br/>
+                        <input type="checkbox" name="chonsize" value="M" /> M<br/><br/>
+                        <input type="checkbox" name="chonsize" value="L" /> L<br/><br/>
+                        <input type="checkbox" name="chonsize" value="XL" /> XL<br/><br/>
+                        <input type="checkbox" name="chonsize" value="XXL" /> XXL<br/><br/>
+                        
+                        <input type="submit" value="Submit" /><br/>
+
                     </form>
                 </div>
                 <!-- Size End -->
@@ -320,9 +342,8 @@
                                             Sort by
                                         </button>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
-                                    <a class="dropdown-item" href="#">Latest</a>
-                                    <a class="dropdown-item" href="#">Popularity</a>
-                                    <a class="dropdown-item" href="#">Best Rating</a>
+                                    <a class="dropdown-item" href="newshop">New</a>
+                                    <a class="dropdown-item" href="bestprice">Best Price</a>
                                 </div>
                             </div>
                         </div>
