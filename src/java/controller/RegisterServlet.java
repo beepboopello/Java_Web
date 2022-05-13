@@ -39,9 +39,10 @@ public class RegisterServlet extends HttpServlet {
         String fn = request.getParameter("fname");
         String ln = request.getParameter("lname");
         String e = request.getParameter("email");
+        String a = request.getParameter("address");
         String sdt = request.getParameter("phone");
         
-        Customer c = new Customer( fn, ln, sdt, e, e, un, pw);
+        Customer c = new Customer( fn, ln, a, e, sdt, un, pw);
         CustomerDAO dao = new CustomerDAO();
         dao.addCustomer(c);
         request.getRequestDispatcher("login.jsp").forward(request, response);

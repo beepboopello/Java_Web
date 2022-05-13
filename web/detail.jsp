@@ -183,7 +183,7 @@
                 <div id="product-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner border">
                         <div class="carousel-item active">
-                            <img class="w-100 h-100" src="${product.image}" alt="img/alternative.png">
+                            <img class="w-100 h-100" src="${product.image}" alt="Image">
                         </div>
                         
                     </div>
@@ -210,7 +210,7 @@
                 </div>
 <!--                <h3 class="font-weight-semi-bold mb-4">${product.price}</h3><h3 class="text-muted ml-2"><del>${product.price}</del></h3>-->
                 <div class="d-flex justify-content-left">
-                    <h3>${product.price*product.discount/100}</h3><h3 class="text-muted ml-2"><del>${product.price}</del></h3>
+                    <h3>${product.price*(100-product.discount)/100}</h3><h3 class="text-muted ml-2"><del>${product.price}</del></h3>
                 </div>
                 <p class="mb-4">${product.description} </p>
                 <div class="d-flex mb-3">

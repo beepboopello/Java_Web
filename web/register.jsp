@@ -66,6 +66,10 @@
                                                     <label class="form-control-placeholder" for="username">email</label>
                                             </div>
                                             <div class="form-group mt-3">
+                                                    <input type="text" class="form-control" name="address" required>
+                                                    <label class="form-control-placeholder" for="username">Address</label>
+                                            </div>
+                                            <div class="form-group mt-3">
                                                     <input type="text" class="form-control" name="phone" required>
                                                     <label class="form-control-placeholder" for="username">Phone number</label>
                                             </div>
